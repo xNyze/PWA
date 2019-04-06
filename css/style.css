@@ -5,7 +5,6 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: bisque;
   text-align: center;
 }
 
@@ -13,13 +12,12 @@ body {
   display: grid;
   grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(2, auto);
-
   grid-template-areas: "header header" "nav content" "footer footer";
 }
 
 header {
   grid-area: header;
-  height: 10vh;
+  height: 15vh;
   width: 100vw;
   display: flex;
   background-color: gray;
@@ -27,15 +25,15 @@ header {
 
 nav {
   grid-area: nav;
-  width: 15vw;
-  height: 85vh;
+  height: 80vh;
+  width: 20vw;
   background-color: white;
 }
 
 #content {
   grid-area: content;
-  width: 85vw;
-  height: 85vh;
+  height: 80vh;
+  width: 80vw;
   background-color: lightslategray;
 }
 

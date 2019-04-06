@@ -7,7 +7,7 @@
     <link rel="Stylesheet" href="css/style.css" />
     <title>Noten Lernprogramm</title>
   </head>
-  <body>
+  <body> 
     <!--wrapper-->
     <div id="wrapper">
       <!--Headline-->
@@ -28,7 +28,18 @@
       <!--Content-->
       <div id="content">
         <h1>Inhalt</h1>
+
         <button id="genTask">Aufgaben erstellen!</button>
+        <button id="aButton">A</button>
+        <button id="bButton">B</button>
+        <button id="cButton">C</button>
+        <button id="dButton">D</button>
+
+        <progress id="progress">value="0" max="100"</progress>
+        <input type="radio" name="Bassschlüssel" id="bass">
+        <input type="radio" name="Violinenschlüssel" id="violin">
+        <label for="Bassschlüssel">Bassschlüssel</label>
+        <label for="Violinenschlüssel">Violinenschlüssel</label>
       </div>
 
       <!--Footer-->
@@ -42,4 +53,5 @@
     <script src="js/view.js"></script>
     <script src="js/controller.js"></script>
   </body>
+
 </html>
