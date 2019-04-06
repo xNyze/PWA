@@ -18,11 +18,13 @@
 
       <!--Navbar-->
       <nav>
+        <div id="navbar">
         <ul>
           <li>Lernspiel</li>
           <li>Gesamtstatistik</li>
           <li>Kontakt</li>
         </ul>
+        </div>
       </nav>
 
       <!--Content-->
@@ -34,12 +36,7 @@
           <button id="bButton">B</button>
           <button id="cButton">C</button>
           <button id="dButton">D</button>
-
           <progress id="progress" value="0" max="100"></progress>
-          <input type="radio" name="Bassschlüssel" id="bass" />
-          <input type="radio" name="Violinenschlüssel" id="violin" />
-          <label for="Bassschlüssel">Bassschlüssel</label>
-          <label for="Violinenschlüssel">Violinenschlüssel</label>
         </div>
 
         <div id="description">
@@ -65,6 +62,11 @@
         <button id="easyButton">Leicht</button>
         <button id="mediumButton">Mittel</button>
         <button id="hardButton">Schwer</button>
+        <p></p>
+        <input type="radio" name="Bassschlüssel" id="bass" />
+        <input type="radio" name="Violinenschlüssel" id="violin" />
+        <label for="Bassschlüssel">Bassschlüssel</label>
+        <label for="Violinenschlüssel">Violinenschlüssel</label>
     </div>
 
     <script src="js/vexflow-min.js"></script>
