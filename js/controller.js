@@ -7,7 +7,7 @@ buttons.forEach(function(button) {
 });
 
 /**
- * helper function that sets progressbar to calculated value after each answer
+ * helper function that sets progressbar to value set according to the chosen mode after each answer
  * mode: string
  * return: none
  */
@@ -34,7 +34,22 @@ function progressBar(mode) {
  * mode: string
  * return: none
  */
-function statistic() {}
+function statistic(mode) {
+  var points = 0;
+  switch (mode) {
+    case "easyMode":
+      points = 1;
+      break;
+
+    case "mediumMode":
+      points = 3;
+      break;
+
+    case "hardMode":
+      points = 5;
+      break;
+  }
+}
 
 /**
  * sets up new Note, calls all helper functions
