@@ -5,36 +5,13 @@ body{
 
 #wrapper{
     display: grid;
+    grid-template-areas: 
+        "header header heaeder"
+        "nav content content"
+        "footer footer footer";
 }
 
 header{
+    grid-area: "header";
     display: flex;
-    background-color: #777;
-    color: grey;
-}
-
-nav{
-    display: flex;
-    flex-direction: column
-
-}
-
-nav ul {
-    padding: 0;
-  }
-
-section{
-    
-}
-
-#conent{
-    float: left;
-    padding: 25px;
-}
-
-footer{
-    background-color: #777;
-    padding: 10px;
-    text-align: center;
-    color: white;
 }
