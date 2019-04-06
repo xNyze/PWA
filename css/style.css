@@ -37,25 +37,26 @@ nav {
   grid-area: content;
   height: 80vh;
   width: 80vw;
+  display: grid;
   background-color: lightslategray;
   grid-template-columns: repeat(1, auto);
   grid-template-rows: repeat(2, auto);
   grid-template-areas: "game description";
 }
 
-    #game {
-      grid-area: game;
-      height: 80vh;
-      width: 60vw;
-      background-color: gray;  
-    }
+#game {
+  grid-area: game;
+  height: 80vh;
+  width: 60vw;
+  background-color: gray;
+}
 
-    #description {
-      grid-area: description;
-      height: 80vh;
-      width: 20vw;
-      background-color: white;
-    }
+#description {
+  grid-area: description;
+  height: 80vh;
+  width: 20vw;
+  background-color: white;
+}
 
 footer {
   grid-area: footer;
