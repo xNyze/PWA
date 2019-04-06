@@ -27,7 +27,12 @@ nav {
   grid-area: nav;
   height: 80vh;
   width: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
+  border-radius: 18px;
+  border-collapse: separate;
 }
 
 #content {
@@ -35,7 +40,7 @@ nav {
   height: 80vh;
   width: 80vw;
   display: grid;
-  background-color: lightslategray;
+  background-color: gray;
   grid-template-columns: repeat(1, auto);
   grid-template-rows: repeat(2, auto);
   grid-template-areas: "game description";
@@ -53,6 +58,7 @@ nav {
   height: 80vh;
   width: 20vw;
   background-color: white;
+  border-radius: 18px;
 }
 
 footer {

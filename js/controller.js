@@ -6,24 +6,36 @@ buttons.forEach(function(button) {
   button.addEventListener("click", nextNote);
 });
 
-/*var radioButtons = document.querySelectorAll("#violin, #bass");
-radioButtons.forEach(function(radioButton) {
-  radioButton.addEventListener("click", function() {
-    if (radioButton.checked) {
-      radioButton.checked = false;
-    } else {
-      radioButton.checked = true;
-    }
-  });
-});*/
+/**
+ * sets progressbar to calculated value after each answer
+ * mode: string
+ */
+function progressBar(mode) {
+  var stepSize = 0;
+  switch (mode) {
+    case "leicht":
+      stepSize = 25;
+      break;
 
-function progressBar() {
-  document.querySelector("#progress").value =
-    document.querySelector("#progress").value + 10;
+    case "mittel":
+      stepSize = 12.5;
+      break;
+
+    case "schwer":
+      stepsize = 10;
+      break;
+  }
+  document.querySelector("#progress").value += stepSize;
 }
 
 function statistic() {}
 
 function nextNote() {
-  progressBar();
+  var modes = document.querySelectorAll("[id*=Mode]");
+  var mode = modes.forEach(function(mode) {
+    if (mode.checked) {
+      return mode.textContent;
+    }
+  });
+  progressBar(mode);
 }

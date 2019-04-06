@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="Stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="icon.ico" type="image/ico" />
     <title>Noten Lernprogramm</title>
   </head>
   <body>
@@ -33,14 +34,7 @@
           <button id="bButton">B</button>
           <button id="cButton">C</button>
           <button id="dButton">D</button>
-
           <progress id="progress" value="0" max="100"></progress>
-          <form>
-            <label for="radio1">Bassschlüssel</label>
-            <input type="radio" name="radio1" id="bass" checked="checked" />
-            <label for="radio1">Violinenschlüssel</label>
-            <input type="radio" name="radio1" id="violin" />
-          </form>
         </div>
 
         <div id="description">
@@ -56,14 +50,25 @@
     </div>
 
     <div id="finish">
+      <p>Geschafft!</p>
       <button id="playAgain">Erneut Spielen</button>
       <button id="showStatistic">Statistik anzeigen</button>
     </div>
 
     <div id="mode">
-      <button id="easyButton">Leicht</button>
-      <button id="mediumButton">Mittel</button>
-      <button id="hardButton">Schwer</button>
+      <p>Bitte wähle eine Schwierigkeit aus.</p>
+      <form action="">
+        <input type="radio" name="mode1" id="easyMode" checked="checked">Leicht</input>
+        <input type="radio" name="mode2" id="mediumMode">Mittel</input>
+        <input type="radio" name="mode3" id="hardMode">Schwer</input>
+      </form>
+
+      <form>
+        <label for="radio1">Bassschlüssel</label>
+        <input type="radio" name="radio1" id="bassKey" checked="checked" />
+        <label for="radio1">Violinenschlüssel</label>
+        <input type="radio" name="radio1" id="violinKey" />
+      </form>
     </div>
 
     <script src="js/vexflow-min.js"></script>
