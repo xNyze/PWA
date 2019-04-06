@@ -1,1 +1,1 @@
-//document.querySelector("#genTask").addEventListener("click", generateNotes, false);
+document.querySelector("#play").addEventListener("click", generateNotes, false);

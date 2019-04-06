@@ -8,7 +8,7 @@ function generateNotes(count) {
   VF = Vex.Flow;
 
   // Create an SVG renderer and attach it to the DIV element named "boo".
-  var div = document.querySelector("#content");
+  var div = document.querySelector("#note");
   var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
   // Configure the rendering context.

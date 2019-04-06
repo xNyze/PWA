@@ -7,35 +7,47 @@ buttons.forEach(function(button) {
 });
 
 /**
- * sets progressbar to calculated value after each answer
+ * helper function that sets progressbar to calculated value after each answer
  * mode: string
+ * return: none
  */
 function progressBar(mode) {
   var stepSize = 0;
   switch (mode) {
-    case "leicht":
+    case "easyMode":
       stepSize = 25;
       break;
 
-    case "mittel":
+    case "mediumMode":
       stepSize = 12.5;
       break;
 
-    case "schwer":
-      stepsize = 10;
+    case "hardMode":
+      stepSize = 10;
       break;
   }
   document.querySelector("#progress").value += stepSize;
 }
 
+/**
+ * helper function that handles statistics after each answer
+ * mode: string
+ * return: none
+ */
 function statistic() {}
 
+/**
+ * sets up new Note, calls all helper functions
+ * return: none
+ */
 function nextNote() {
   var modes = document.querySelectorAll("[id*=Mode]");
-  var mode = modes.forEach(function(mode) {
+  let chosenMode;
+  modes.forEach(function(mode) {
     if (mode.checked) {
-      return mode.textContent;
+      chosenMode = mode.id;
     }
   });
-  progressBar(mode);
+  progressBar(chosenMode);
+  statistic(chosenMode);
 }

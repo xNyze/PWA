@@ -35,6 +35,7 @@
           <button id="cButton">C</button>
           <button id="dButton">D</button>
           <progress id="progress" value="0" max="100"></progress>
+          <div id="note"></div>
         </div>
 
         <div id="description">
@@ -51,23 +52,26 @@
 
     <div id="finish">
       <p>Geschafft!</p>
-      <button id="playAgain">Erneut Spielen</button>
+      <button id="play">Spielen</button>
       <button id="showStatistic">Statistik anzeigen</button>
     </div>
 
     <div id="mode">
       <p>Bitte wähle eine Schwierigkeit aus.</p>
       <form action="">
-        <input type="radio" name="mode1" id="easyMode" checked="checked">Leicht</input>
-        <input type="radio" name="mode2" id="mediumMode">Mittel</input>
-        <input type="radio" name="mode3" id="hardMode">Schwer</input>
+        <label for="easyMode">Leicht</label>
+        <input type="radio" name="modes" id="easyMode" checked="checked"></input>
+        <label for="mediumMode">Mittel</label>
+        <input type="radio" name="modes" id="mediumMode"></input>
+        <label for="hardMode">Schwer</label>
+        <input type="radio" name="modes" id="hardMode"></input>
       </form>
 
       <form>
-        <label for="radio1">Bassschlüssel</label>
-        <input type="radio" name="radio1" id="bassKey" checked="checked" />
-        <label for="radio1">Violinenschlüssel</label>
-        <input type="radio" name="radio1" id="violinKey" />
+        <label for="bassKey">Bassschlüssel</label>
+        <input type="radio" name="keys" id="bassKey" checked="checked" />
+        <label for="violinKey">Violinenschlüssel</label>
+        <input type="radio" name="keys" id="violinKey" />
       </form>
     </div>
 
