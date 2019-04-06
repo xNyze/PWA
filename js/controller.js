@@ -7,7 +7,16 @@ buttons.forEach(function(button) {
 });
 
 var radioButtons = document.querySelectorAll("#violin, #bass");
-radioButtons.forEach(function() {});
+radioButtons.forEach(function(radioButton) {
+  radioButton.addEventListener("click", function(radioButton) {
+    if (radioButton.checked) {
+      console.warn("true");
+      radioButton.checked = false;
+    } else {
+      radioButton.checked = true;
+    }
+  });
+});
 
 function progressBar() {
   document.querySelector("#progress").value =
