@@ -17,3 +17,6 @@ stave.addClef("treble").addTimeSignature("4/4");
 
 // Connect it to the rendering context and draw!
 stave.setContext(context).draw();
+
+var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
+voice.addTickables(document.querySelector('#genTask').addEventListener("click", generateNotes(1), false););
