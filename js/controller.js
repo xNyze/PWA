@@ -6,17 +6,16 @@ buttons.forEach(function(button) {
   button.addEventListener("click", nextNote);
 });
 
-var radioButtons = document.querySelectorAll("#violin, #bass");
+/*var radioButtons = document.querySelectorAll("#violin, #bass");
 radioButtons.forEach(function(radioButton) {
-  radioButton.addEventListener("click", function(radioButton) {
+  radioButton.addEventListener("click", function() {
     if (radioButton.checked) {
-      console.warn("true");
       radioButton.checked = false;
     } else {
       radioButton.checked = true;
     }
   });
-});
+});*/
 
 function progressBar() {
   document.querySelector("#progress").value =
