@@ -27,6 +27,9 @@ nav {
   grid-area: nav;
   height: 80vh;
   width: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
 }
 
