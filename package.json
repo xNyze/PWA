@@ -1,0 +1,25 @@
+{
+  "name": "Notenlernprogramm",
+  "version": "1.0.0",
+  "description": "Programm zum Noten lernen",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -c-1 -p 8081"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcpaulo/PWA.git"
+  },
+  "keywords": [
+    "pwa"
+  ],
+  "author": "Paul Christ, Paul Zänker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jcpaulo/PWA/issues"
+  },
+  "homepage": "https://github.com/jcpaulo/PWA#readme",
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
+}
