@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  --yellow: #f1c40f;
 }
 
 li {
@@ -9,12 +10,13 @@ li {
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--yellow);
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  background-color: #e6e3cf;
 }
 
 #wrapper {
@@ -29,7 +31,7 @@ header {
   height: 15vh;
   width: 100vw;
   display: flex;
-  background-color: gray;
+  background-color: #e6e3cf;
 }
 
 nav {
@@ -37,11 +39,18 @@ nav {
   height: 80vh;
   width: 20vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  border-radius: 18px;
+  background-color: var(--yellow);
+  border-top-right-radius: 18px;
   border-collapse: separate;
+}
+
+.navBtn {
+  background-color: #e6e3cf;
+  width: 12vw;
+  padding: 4px 10px;
 }
 
 nav ul li {
@@ -54,7 +63,7 @@ nav ul li {
   height: 80vh;
   width: 80vw;
   display: grid;
-  background-color: gray;
+  background-color: #e6e3cf;
   grid-template-columns: repeat(1, auto);
   grid-template-rows: repeat(2, auto);
   grid-template-areas: "game description";
@@ -64,15 +73,15 @@ nav ul li {
   grid-area: game;
   height: 80vh;
   width: 60vw;
-  background-color: gray;
+  background-color: #e6e3cf;
 }
 
 #description {
   grid-area: description;
   height: 80vh;
   width: 20vw;
-  background-color: white;
-  border-radius: 18px;
+  background-color: var(--yellow);
+  border-top-left-radius: 18px;
 }
 
 footer {
@@ -87,4 +96,45 @@ footer {
 
 #finish {
   display: block;
+}
+
+@media (max-width: 750px) {
+ #wrapper {
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(1, auto);
+  grid-template-areas: "header" "nav" "content" "footer";
+ }
+
+ header {
+  grid-area: header;
+  height: 5vh;
+  width: 100vw;
+ }
+
+ nav {
+  grid-area: nav;
+  height: 10vh;
+  width: 100vw;
+  flex-direction: row;
+ }
+
+ #content {
+  grid-area: content;
+  height: 70vh;
+  width: 100vw;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(1, auto);
+  grid-template-areas: "game" "description";
+ }
+
+ #game {
+  height: 70;
+  width: 100;
+ }
+
+ #description {
+  display: none;
+ }
+
+
 }
