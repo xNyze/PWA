@@ -100,6 +100,9 @@ nav {
   height: 80vh;
   width: 60vw;
   background-color: #e6e3cf;
+  border: 3px solid black;
+  border-top-left-radius:18px;
+  border-top-right-radius:18px;
 }
 
 #description {
