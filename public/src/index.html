@@ -32,6 +32,7 @@
           <button id="bButton">B</button>
           <button id="cButton">C</button>
           <button id="dButton">D</button>
+          <label for="progress">Spielfortschritt</label>
           <progress id="progress" value="0" max="100"></progress>
           <div id="note"></div>
         </div>
@@ -54,29 +55,35 @@
       </footer>
     </div>
 
+    <!--Modal Finish-->
     <div id="finish">
       <p>Geschafft!</p>
       <button id="play">Spielen</button>
       <button id="showStatistic">Statistik anzeigen</button>
     </div>
 
-    <div id="mode">
-      <p>Bitte wähle eine Schwierigkeit aus.</p>
-      <form action="">
-        <label for="easyMode">Leicht</label>
-        <input type="radio" name="modes" id="easyMode" checked="checked"></input>
-        <label for="mediumMode">Mittel</label>
-        <input type="radio" name="modes" id="mediumMode"></input>
-        <label for="hardMode">Schwer</label>
-        <input type="radio" name="modes" id="hardMode"></input>
-      </form>
-
-      <form>
-        <label for="bassKey">Bassschlüssel</label>
-        <input type="radio" name="keys" id="bass" class="keys" checked="checked"  />
-        <label for="violinKey">Violinenschlüssel</label>
-        <input type="radio" name="keys" id="treble" class="keys" />
-      </form>
+    <!--Modal Mode-->
+    <div id="modeModal" class="modal">
+      <div id="mode">
+        <p>Bitte wähle eine Schwierigkeit aus.</p>
+        
+        <form action="">
+          <label for="easyMode">Leicht</label>
+          <input type="radio" name="modes" id="easyMode" checked="checked"></input>
+          <label for="mediumMode">Mittel</label>
+          <input type="radio" name="modes" id="mediumMode"></input>
+          <label for="hardMode">Schwer</label>
+          <input type="radio" name="modes" id="hardMode"></input>
+        </form>
+        
+        <form>
+            <label for="bassKey">Bassschlüssel</label>
+            <input type="radio" name="keys" id="bass" checked="checked" />
+            <label for="violinKey">Violinenschlüssel</label>
+            <input type="radio" name="keys" id="treble" />
+          </form>
+        </div>
+      </div>
     </div>
 
     <script src="./js/vexflow-min.js"></script>
