@@ -1,60 +1,74 @@
-let key;
+var noteObject;
+/**
+ * initializes every new note + answers for the game
+ * @param {key chosen by the user from the radioButton} enteredKey 
+ * @param {boolean, if true another note + answers is generated} rand 
+ */
+function initNotes(enteredKey, rand) {
+  var key = enteredKey || 'treble';
 
-function generateNotes(count, enteredKey) {
-  var tasks = {};
-
-  key = enteredKey || 'bass';
-
-  for (var i = 0; i < count; i++) {
-    console.warn(i);
+  if(rand) {
+    noteObject = genNote();
   }
+  renderNotes(noteObject.note, key);
+}
 
-  VF = Vex.Flow;
+/**
+ * returns noteObject object containing the note for rendering and the answers for displaying
+ * answers[0] is always the solution, needs to be shuffled in the view
+ */
+function genNote() {
+  var everyNote = ['C','D','E','F','G'];
+  var everyNoteIndex = [];
+  for(var i=0; i<everyNote.length; i++) {
+    everyNoteIndex.push(i);
+  } 
+  var randomIndex = distinctRandom(everyNoteIndex);
+  var randomAnswers = [];
+  while(randomAnswers.length < 4) {
+    randomAnswers.push(everyNote[randomIndex.next().value]);  
+  }
+  var noteObject = {
+    note: [randomAnswers[0]+"/4"],
+    answers: randomAnswers
+  };
+  return noteObject;
+}
 
-  // Create an SVG renderer and attach it to the DIV element named "boo".
-  var div = document.querySelector("#note");
-  var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+/**
+ * shuffles a given array of numbers and returns a distinct random number of that array
+ * @param {array of numbers yielding distinct members, when prompted, until empty} numbers 
+ */
+function *distinctRandom(numbers) {
+  var rand = numbers.length;
+  while (rand--) {
+      yield numbers.splice(Math.floor(Math.random() * (rand+1)), 1)[0];
+  }
+}
 
-  // Configure the rendering context.
-  renderer.resize(500, 500);
-  var context = renderer.getContext();
-  context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
+/**
+ * Vexflow Library rendering a single note for the game scenario
+ * @param {generated note, which will be rendered} note 
+ * @param {chosen key to render the note in} key 
+ */
+function renderNotes(note, key) {
+  document.getElementById('note').innerHTML = "";
+    var div = document.getElementById("note");
 
-  // Create a stave of width 400 at position 10, 40 on the canvas.
-  var stave = new VF.Stave(10, 40, 400);
+    VF = Vex.Flow;
+    var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+    renderer.resize(120, 150);
+    var context = renderer.getContext();
+    var stave = new VF.Stave(10, 10, 100);
+    stave.addClef(key);
+    stave.setContext(context).draw();
+ 
+    var notes = [
+    new VF.StaveNote({clef: key, keys: note, duration: "q"}),
+    ];
 
-  // Add a clef and time signature.
-  stave.addClef(key).addTimeSignature("4/4");
-
-  // Connect it to the rendering context and draw!
-  stave.setContext(context).draw();
-
-  var notes = [
-    // A quarter-note C.
-    new VF.StaveNote({ clef: key, keys: ["c/4"], duration: "q" }),
-
-    // A quarter-note D.
-    new VF.StaveNote({ clef: key, keys: ["c/4"], duration: "q" }),
-
-    // A quarter-note rest. Note that the key (b/4) specifies the vertical
-    // position of the rest.
-    new VF.StaveNote({ clef: key, keys: ["c/4"], duration: "qr" }),
-
-    // A C-Major chord.
-    new VF.StaveNote({
-      clef: "treble",
-      keys: ["c/4", "e/4", "g/4"],
-      duration: "q"
-    })
-  ];
-
-  // Create a voice in 4/4 and add above notes
-  var voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
-  voice.addTickables(notes);
-
-  // Format and justify the notes to 400 pixels.
-  var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
-
-  // Render voice
-  voice.draw(context, stave);
+    var voice = new VF.Voice({num_beats:1,  beat_value: 4});
+    voice.addTickables(notes);
+    var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 50);
+    voice.draw(context, stave);
 }

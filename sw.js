@@ -8,8 +8,7 @@ self.addEventListener('install', function(){
             '/src/css/style.css',
             '/src/img/icon.ico',
         ]);
-    }););
-    
+    }));
 });
 
 self.addEventListener('activate', function(){

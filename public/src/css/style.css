@@ -4,6 +4,10 @@
   --yellow: #f1c40f;
 }
 
+html {
+  max-width: 100vw;
+}
+
 li {
   list-style: none;
 }
