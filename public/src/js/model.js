@@ -1,4 +1,8 @@
 var noteObject;
+var statsObject = {
+  totalPoints: 0,
+  problems: []
+};
 /**
  * initializes every new note + answers for the game
  * @param {key chosen by the user from the radioButton} enteredKey 

@@ -6,8 +6,7 @@ var currentProblem = 0;
 var buttons = document.querySelectorAll("[id*=Button]");
 buttons.forEach(function(button) {
   button.addEventListener("click", function() {
-    changeAnswerBtns();
-    nextNote();
+    nextNote(this.id);
   });
 });
 
@@ -34,30 +33,46 @@ function progressBar(mode) {
 }
 
 /**
- * helper function that handles statistics after each answer
+ * helper function persisting the results in the global statsObject
  * @param {String} mode 
+ * @param {String containing only the ID} clickedID 
  */
-function statistic(mode) {
-  var points = 0;
+function statistic(mode, clickedID) {
+  var pointsForMode = 0;
   switch (mode) {
     case "easyMode":
-      points = 1;
+      pointsForMode = 1;
       break;
 
     case "mediumMode":
-      points = 3;
+      pointsForMode = 3;
       break;
 
     case "hardMode":
-      points = 5;
+      pointsForMode = 5;
       break;
   }
+
+  var problem = {
+    "outcome": false, 
+    "points": 0,
+    "noteObject": noteObject
+  };
+
+  if(noteObject.answers[0] === document.getElementById(clickedID).textContent) {
+    problem.outcome = true;
+    problem.points = pointsForMode;
+  }
+
+  statsObject.totalPoints += problem.points;
+  statsObject.problems.push(problem);
+  console.warn(statsObject);
 }
 
 /**
  * sets up new Note, calls all helper functions
  */
-function nextNote() {
+function nextNote(clickedID) {
   var modes = document.querySelectorAll("[id*=Mode]");
   var chosenMode;
   modes.forEach(function(mode) {
@@ -84,9 +99,10 @@ function nextNote() {
   }
 
   progressBar(chosenMode);
-  statistic(chosenMode);
+  statistic(chosenMode, clickedID);
   if(currentProblem < totalProblems) {
     initNotes(document.querySelector('.keys:checked').id,true);
+    changeAnswerBtns();
   } else {
     alert('Congrats you finished the learning program!');
   }

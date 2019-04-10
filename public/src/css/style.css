@@ -88,6 +88,10 @@ nav ul li {
   border-top-left-radius: 18px;
 }
 
+#stats {
+  display: none;
+}
+
 footer {
   grid-area: footer;
   background-color: lightslategray;
