@@ -19,34 +19,40 @@
 
       <!--Navbar-->
       <nav>
-        <button class="navBtn">Lernspiel</button>
-        <button class="navBtn">Statistik</button>
-        <button class="navBtn">Kontakt</button>
+        <button id="navGame" class="navBtn">Lernspiel</button>
+        <button id="navStats" class="navBtn">Statistik</button>
+        <button id="navContact" class="navBtn">Kontakt</button>
       </nav>
 
       <!--Content-->
       <div id="content">
 
-        <div id="game">
-          <button id="aButton">A</button>
-          <button id="bButton">B</button>
-          <button id="cButton">C</button>
-          <button id="dButton">D</button>
-          <label for="progress">Spielfortschritt</label>
-          <progress id="progress" value="0" max="100"></progress>
-          <div id="note"></div>
-        </div>
+        <div id="mainContent" class="mainContent">
+          <div id="game">
+            <button id="aButton">A</button>
+            <button id="bButton">B</button>
+            <button id="cButton">C</button>
+            <button id="dButton">D</button>
+            <label for="progress">Spielfortschritt</label>
+            <progress id="progress" value="0" max="100"></progress>
+            <div id="note">
+            </div>
+          </div>
 
-        <div id="description">
+          <div id="stats">
+            <p id="totalPoints"></p>
+            <p id="correctAnswers"></p>
+            <p id="falseAnswers"></p>
+          </div>
+
+          <div id="contact">
+            <p>Kontakt</p>
+          </div>
+      </div>
+
+      <div id="description">
           <h3>Spielbeschreibung</hs3>
           <p>TODO</p>
-        </div>
-
-        <div id="stats">
-          <p id="totalPoints"></p>
-          <p id="correctAnswers"></p>
-          <p id="falseAnswers"></p>
-        </div>
       </div>
 
       <!--Footer-->
@@ -56,10 +62,12 @@
     </div>
 
     <!--Modal Finish-->
-    <div id="finish">
-      <p>Geschafft!</p>
-      <button id="play">Spielen</button>
-      <button id="showStatistic">Statistik anzeigen</button>
+    <div id="finModal" class="modal">
+      <div id="finish">
+        <p>Geschafft!</p>
+        <button id="playAgain" class="play">Nochmal Spielen!</button>
+        <button id="showStatistic">Statistik anzeigen</button>
+      </div>
     </div>
 
     <!--Modal Mode-->
@@ -77,12 +85,12 @@
         </form>
         
         <form>
-            <label for="bassKey">Bassschlüssel</label>
-            <input type="radio" name="keys" id="bass" checked="checked" />
             <label for="violinKey">Violinenschlüssel</label>
-            <input type="radio" name="keys" id="treble" />
-          </form>
-        </div>
+            <input type="radio" class="keys" name="keys" id="treble" checked="checked"/>
+            <label for="bassKey">Bassschlüssel</label>
+            <input type="radio" class="keys" name="keys" id="bass"/>
+        </form>
+        <button id="play" class="play">Spielen!</button>
       </div>
     </div>
 
