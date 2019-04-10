@@ -1,15 +1,19 @@
+var currentProblem = 0;
+
 /**
  * creating eventlisteners for elements intended for user interaction
  */
 var buttons = document.querySelectorAll("[id*=Button]");
 buttons.forEach(function(button) {
-  button.addEventListener("click", nextNote);
+  button.addEventListener("click", function() {
+    changeAnswerBtns();
+    nextNote();
+  });
 });
 
 /**
  * helper function that sets progressbar to value set according to the chosen mode after each answer
- * mode: string
- * return: none
+ * @param {String} mode 
  */
 function progressBar(mode) {
   var stepSize = 0;
@@ -31,8 +35,7 @@ function progressBar(mode) {
 
 /**
  * helper function that handles statistics after each answer
- * mode: string
- * return: none
+ * @param {String} mode 
  */
 function statistic(mode) {
   var points = 0;
@@ -53,16 +56,38 @@ function statistic(mode) {
 
 /**
  * sets up new Note, calls all helper functions
- * return: none
  */
 function nextNote() {
   var modes = document.querySelectorAll("[id*=Mode]");
-  let chosenMode;
+  var chosenMode;
   modes.forEach(function(mode) {
     if (mode.checked) {
       chosenMode = mode.id;
     }
   });
+
+  var totalProblems;
+  currentProblem++;
+
+  switch (chosenMode) {
+    case "easyMode":
+      totalProblems = 4;
+      break;
+
+    case "mediumMode":
+      totalProblems = 8;
+      break;
+
+    case "hardMode":
+      totalProblems = 10;
+      break;
+  }
+
   progressBar(chosenMode);
   statistic(chosenMode);
+  if(currentProblem < totalProblems) {
+    initNotes(document.querySelector('.keys:checked').id,true);
+  } else {
+    alert('Congrats you finished the learning program!');
+  }
 }
