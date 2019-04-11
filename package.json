@@ -4,11 +4,11 @@
   "description": "Programm zum Noten lernen",
   "main": "index.js",
   "scripts": {
-    "start": "http-server -c-1 -p 8081"
+    "start": "http-server ./public/src -c-1 -p 8081 -d false"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jcpaulo/PWA.git"
+    "url": "https://github.com/jcpaulo/PWA.git"
   },
   "keywords": [
     "pwa"
