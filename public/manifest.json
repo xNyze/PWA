@@ -1,6 +1,6 @@
 {
   "name": "Notenlernprogramm",
-  "short_name": "IT",
+  "short_name": "Notes",
   "start_url": "index.html",
   "display": "standalone",
   "orientation": "portrait",
