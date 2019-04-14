@@ -50,6 +50,17 @@ h1 {
   text-shadow: 3px 3px black;
 }
 
+h2 {
+  text-align: center;
+  font-weight: normal;
+  color: var(--orange);
+  font-size: 5em;
+  white-space: nowrap;
+  font-size: 3vw;
+  font-family: "Bangers", cursive;
+  text-shadow: 3px 3px #225479;
+}
+
 h3 {
   font-family: "Patrick Hand";
   text-decoration: underline;
