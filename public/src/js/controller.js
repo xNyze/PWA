@@ -1,5 +1,3 @@
-var currentProblem = 0;
-
 /**
  * creating eventlisteners for elements intended for user interaction
  */
@@ -12,68 +10,33 @@ buttons.forEach(function(button) {
 
 /**
  * helper function that sets progressbar to value set according to the chosen mode after each answer
- * @param {String} mode
  */
-function progressBar(mode) {
-  var stepSize = 0;
-  switch (mode) {
-    case "easyMode":
-      stepSize = 25;
-      break;
-
-    case "mediumMode":
-      stepSize = 12.5;
-      break;
-
-    case "hardMode":
-      stepSize = 10;
-      break;
-  }
-  document.querySelector("#progress").value += stepSize;
+function progressBar() {
+  document.querySelector("#progress").value += modeObject.stepSize;
 }
 
 /**
  * helper function persisting the results in the global statsObject
- * @param {String} mode
  * @param {String containing only the ID} clickedID
  */
-function statistic(mode, clickedID) {
-  var pointsForMode = 0;
-  switch (mode) {
-    case "easyMode":
-      pointsForMode = 1;
-      break;
-
-    case "mediumMode":
-      pointsForMode = 3;
-      break;
-
-    case "hardMode":
-      pointsForMode = 5;
-      break;
-  }
+function statistic(clickedID) {
+  var round = [];
 
   var problem = {
-    outcome: false,
-    points: 0,
-    noteObject: noteObject
+    "answer": document.getElementById(clickedID).textContent,
+    "outcome": document.getElementById(clickedID).textContent == noteObject.answers[0] ? true : false,
+    "points": document.getElementById(clickedID).textContent == noteObject.answers[0] ? modeObject.pointsForMode : 0,
+    "noteObject": noteObject
   };
 
-  if (
-    noteObject.answers[0] === document.getElementById(clickedID).textContent
-  ) {
-    problem.outcome = true;
-    problem.points = pointsForMode;
-  }
-
   statsObject.totalPoints += problem.points;
-  statsObject.problems.push(problem);
+  if(modeObject.currentProblem == 0) {
+    statsObject.rounds.push(round);
+  }
+  statsObject.rounds[statsObject.rounds.length-1].push(problem);
 }
 
-/**
- * sets up new noteObject, calls all helper functions for gameflow
- */
-function nextNote(clickedID) {
+function setMode() {
   var modes = document.querySelectorAll("[id*=Mode]");
   var chosenMode;
   modes.forEach(function(mode) {
@@ -82,31 +45,50 @@ function nextNote(clickedID) {
     }
   });
 
-  var totalProblems;
-  currentProblem++;
+  var totalProblems, stepSize, pointsForMode;
 
   switch (chosenMode) {
     case "easyMode":
       totalProblems = 4;
+      stepSize = 25;
+      pointsForMode = 1;
       break;
 
     case "mediumMode":
       totalProblems = 8;
+      stepSize = 12.5;
+      pointsForMode = 3;
       break;
 
     case "hardMode":
       totalProblems = 10;
+      stepSize = 10;
+      pointsForMode = 5;
       break;
   }
 
-  progressBar(chosenMode);
-  statistic(chosenMode, clickedID);
-  if (currentProblem < totalProblems) {
-    initNotes(document.querySelector(".keys:checked").id, true);
+  modeObject = {
+    "stepSize": stepSize,
+    "totalProblems": totalProblems,
+    "pointsForMode": pointsForMode,
+    "currentProblem": 0,
+    "key": document.querySelector(".keys:checked").id
+  };
+}
+
+/**
+ * sets up new noteObject, calls all helper functions for gameflow
+ */
+function nextNote(clickedID) {
+  progressBar();
+  statistic(clickedID);
+  if (modeObject.currentProblem+1 < modeObject.totalProblems) {
+    initNotes(modeObject.key, true);
     changeAnswerBtns();
+    modeObject.currentProblem++;
   } else {
-    document.querySelector("progress").value = 0;
-    currentProblem = 0;
+    document.querySelector("#progress").value = 0;
+    modeObject.currentProblem = 0;
     document.querySelector("#finModal").style.display = "block";
   }
 }

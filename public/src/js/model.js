@@ -1,8 +1,9 @@
 var noteObject;
 var statsObject = {
   totalPoints: 0,
-  problems: []
+  rounds: []
 };
+var modeObject;
 /**
  * initializes every new note + answers for the game
  * @param {String} enteredKey
@@ -14,7 +15,7 @@ function initNotes(enteredKey, rand) {
   if (rand) {
     noteObject = genNote();
   }
-  renderNotes(noteObject.note, key);
+  renderNotes(noteObject.note, key, document.getElementById("note"));
 }
 
 /**
@@ -48,29 +49,4 @@ function* distinctRandom(numbers) {
   while (rand--) {
     yield numbers.splice(Math.floor(Math.random() * (rand + 1)), 1)[0];
   }
-}
-
-/**
- * Vexflow Library rendering a single note for the game scenario
- * @param {array} note
- * @param {String} key
- */
-function renderNotes(note, key) {
-  document.getElementById("note").innerHTML = "";
-  var div = document.getElementById("note");
-
-  VF = Vex.Flow;
-  var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-  renderer.resize(120, 150);
-  var context = renderer.getContext();
-  var stave = new VF.Stave(10, 10, 100);
-  stave.addClef(key);
-  stave.setContext(context).draw();
-
-  var notes = [new VF.StaveNote({ clef: key, keys: note, duration: "q" })];
-
-  var voice = new VF.Voice({ num_beats: 1, beat_value: 4 });
-  voice.addTickables(notes);
-  var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 50);
-  voice.draw(context, stave);
 }
