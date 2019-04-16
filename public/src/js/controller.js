@@ -12,7 +12,7 @@ buttons.forEach(function(button) {
 
 /**
  * helper function that sets progressbar to value set according to the chosen mode after each answer
- * @param {String} mode 
+ * @param {String} mode
  */
 function progressBar(mode) {
   var stepSize = 0;
@@ -34,8 +34,8 @@ function progressBar(mode) {
 
 /**
  * helper function persisting the results in the global statsObject
- * @param {String} mode 
- * @param {String containing only the ID} clickedID 
+ * @param {String} mode
+ * @param {String containing only the ID} clickedID
  */
 function statistic(mode, clickedID) {
   var pointsForMode = 0;
@@ -54,23 +54,24 @@ function statistic(mode, clickedID) {
   }
 
   var problem = {
-    "outcome": false, 
-    "points": 0,
-    "noteObject": noteObject
+    outcome: false,
+    points: 0,
+    noteObject: noteObject
   };
 
-  if(noteObject.answers[0] === document.getElementById(clickedID).textContent) {
+  if (
+    noteObject.answers[0] === document.getElementById(clickedID).textContent
+  ) {
     problem.outcome = true;
     problem.points = pointsForMode;
   }
 
   statsObject.totalPoints += problem.points;
   statsObject.problems.push(problem);
-  console.warn(statsObject);
 }
 
 /**
- * sets up new Note, calls all helper functions
+ * sets up new noteObject, calls all helper functions for gameflow
  */
 function nextNote(clickedID) {
   var modes = document.querySelectorAll("[id*=Mode]");
@@ -100,10 +101,12 @@ function nextNote(clickedID) {
 
   progressBar(chosenMode);
   statistic(chosenMode, clickedID);
-  if(currentProblem < totalProblems) {
-    initNotes(document.querySelector('.keys:checked').id,true);
+  if (currentProblem < totalProblems) {
+    initNotes(document.querySelector(".keys:checked").id, true);
     changeAnswerBtns();
   } else {
-    alert('Congrats you finished the learning program!');
+    document.querySelector("progress").value = 0;
+    currentProblem = 0;
+    document.querySelector("#finModal").style.display = "block";
   }
 }
