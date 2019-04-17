@@ -40,7 +40,7 @@
             <button id="bButton">B</button>
             <button id="cButton">C</button>
             <button id="dButton">D</button>
-            <label for="progress">Lernfortschritt</label>
+            <label id=progLabel>Lernfortschritt</label>
             <progress id="progress" value="0" max="100"></progress>
             <div id="note">
             </div>
@@ -50,11 +50,11 @@
             <h2>Statistik</h2>
             <p id="totalPoints"></p>
             <div id="lastRound">
-              <button id="back"> < </button>
+              <button id="back" class="statsBtn"> << </button>
               <p id="userAnswer"></p>
-              <p id="correctAnswer"></p>
+              <p3 id="correctAnswer"></p3>
               <div id="statNote"></div>
-              <button id="forward"> > </button>
+              <button id="forward" class="statsBtn"> >> </button>
             </div>
           </div>
 
@@ -88,16 +88,16 @@
     <!--Modal Finish-->
     <div id="finModal" class="modal">
       <div id="finish">
-        <p>Geschafft!</p>
-        <button id="playAgain" class="play">Nochmal Spielen!</button>
-        <button id="showStatistic">Statistik anzeigen</button>
+        <p1>Geschafft!</p1>
+        <button id="playAgain" class="finishBtn">Nochmal Spielen!</button>
+        <button id="showStatistic" class="finishBtn">Statistik anzeigen</button>
       </div>
     </div>
 
     <!--Modal Mode-->
     <div id="modeModal" class="modal">
       <div id="mode">
-        <p>Bitte wähle eine Schwierigkeit aus.</p>
+        <p1>Bitte wähle eine Schwierigkeit aus.</p1>
         
         <form action="">
           <label for="easyMode">Leicht</label>
