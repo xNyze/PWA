@@ -10,7 +10,7 @@ document.querySelector("#navGame").addEventListener("click", function() {
  * initializes the first noteObject, changes the answerBtns and renders the game content
  */
 document
-  .querySelectorAll(".play")
+  .querySelectorAll(".play, .playBtn")
   .forEach(playBtn => playBtn.addEventListener("click", renderGame));
 
 /**

@@ -11,7 +11,8 @@ self.addEventListener("install", function() {
         "/src/js/vexflow-min.js",
         "/src/css/style.css",
         "/src/img/icon.ico",
-        "/src/fonts/Bangers/"
+        "/src/fonts/Bangers/",
+        "https://fonts.googleapis.com/css?family=Patrick+Hand"
       ]);
     })
   );

@@ -287,6 +287,7 @@ footer {
   }
 
   .navBtn {
+    font-size: 6vw;
     background-color: #e6e3cf;
     height: 8vh;
     width: 25vw;
