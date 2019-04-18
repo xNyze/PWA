@@ -17,9 +17,9 @@
 body {
   max-width: 100vw;
   margin: 0;
+  overflow-x: hidden;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-  overflow: hidden;
   background-color: #f9fbe8;
 }
 
@@ -39,7 +39,7 @@ header {
   background-color: #f9fbe8;
 }
 
-header h1 {
+h1 {
   text-align: center;
   font-weight: normal;
   color: var(--blue);
@@ -69,8 +69,15 @@ h3 {
 
 p1 {
   font-family: "Patrick Hand";
-  /*font-family: "Brush Script MT";*/
+  text-align: left; /*does not*/
   font-size: 1.4em;
+}
+
+p3 {
+  font-family: "Patrick Hand";
+  font-size: 2em;
+  color: green;
+  text-decoration: underline;
 }
 
 nav {
@@ -157,8 +164,32 @@ nav {
   display: none;
 }
 
+.statsBtn {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  background-color: var(--blue);
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-family: "Bangers", cursive;
+  font-size: 3em;
+  border-radius: 50%;
+  border: double 5px black;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  transition: 0.6s;
+}
+
+.statsBtn:hover {
+  -webkit-transform: rotateY(360deg);
+  -ms-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+}
+
 #contact {
-  display: none;
+  display: grid;
 }
 
 #description {
@@ -171,12 +202,9 @@ nav {
 
 footer {
   grid-area: footer;
-  position: absolute;
   background-color: lightslategray;
   height: 5vh;
   width: 100vw;
-  left: 0;
-  bottom: 0;
 }
 
 .modal {
@@ -185,14 +213,15 @@ footer {
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 100vw; /* Full width */
-  height: 100vh; /* Full height */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 #mode {
-  margin: 15vh auto; /* 15% from the top and centered */
+  margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 40%; /* Could be more or less, depending on screen size */
@@ -253,29 +282,40 @@ footer {
 }
 
 #finish {
-  margin: 15vh auto; /* 15% from the top and centered */
+  margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 40%; /* Could be more or less, depending on screen size */
-  background-color: var(--orange);
+  background-color: var(--blue);
+}
+
+.finishBtn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #fff;
+  background: #225479;
+  transition: 0.4s;
+}
+
+.finishBtn:hover {
+  background: var(--orange);
+  color: #225479;
 }
 
 @media (max-width: 750px) {
   #wrapper {
     grid-template-columns: repeat(4, auto);
-    grid-template-rows: 1fr;
+    grid-template-rows: repeat(1, auto);
     grid-template-areas: "header" "nav" "content" "footer";
   }
 
   header {
     grid-area: header;
-    height: 10vh;
+    height: 5vh;
     width: 100vw;
-    font-size: large;
-  }
-
-  header h1 {
-    font-size: 9vw;
   }
 
   nav {
@@ -283,46 +323,23 @@ footer {
     height: 10vh;
     width: 100vw;
     flex-direction: row;
-    border-top-right-radius: 0;
-  }
-
-  .navBtn {
-    font-size: 6vw;
-    background-color: #e6e3cf;
-    height: 8vh;
-    width: 25vw;
-    padding: 4px 10px;
-    border-radius: 5px;
   }
 
   #content {
     grid-area: content;
-    height: 75vh;
+    height: 70vh;
     width: 100vw;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: "mainContent";
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(1, auto);
+    grid-template-areas: "mainContent" "description";
   }
 
-  #mainContent {
-    grid-area: mainContent;
-    width: 99vw;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-
-  footer {
-    height: 5vh;
+  #game {
+    height: 70;
+    width: 100;
   }
 
   #description {
     display: none;
-  }
-
-  #mode,
-  #finish {
-    margin: 30vh auto;
-    width: 70vw;
-    height: 23vh;
   }
 }
