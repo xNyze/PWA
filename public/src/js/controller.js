@@ -1,10 +1,30 @@
 /**
  * creating eventlisteners for elements intended for user interaction
  */
-var buttons = document.querySelectorAll("[id*=Button]");
-buttons.forEach(function(button) {
-  button.addEventListener("click", function() {
+var navButtons = document.querySelectorAll("[id*=Button]");
+navButtons.forEach(function(navButton) {
+  navButton.addEventListener("click", function() {
     nextNote(this.id);
+  });
+});
+
+/**
+ * creating eventlisteners for question forward/back button
+ */
+var statQuestionBtns = document.querySelectorAll("#questionForward, #questionBack");
+statQuestionBtns.forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    navigateStatQuestions(this.id);
+  });
+});
+
+/**
+ * creating eventlisteners for round forward/back button
+ */
+var statRoundBtns = document.querySelectorAll('#roundBack, #roundForward');
+statRoundBtns.forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    navigateStatRounds(this.id);
   });
 });
 
@@ -74,6 +94,47 @@ function setMode() {
     "currentProblem": 0,
     "key": document.querySelector(".keys:checked").id
   };
+}
+
+/**
+ * 
+ * @param {String} direction 
+ */
+function navigateStatRounds(direction) {
+  statsObject.indexRounds += direction === "roundForward" || -1;
+
+  var currentStatObject = statsObject.rounds[statsObject.indexRounds];
+
+  document.querySelector("#userAnswer").textContent = currentStatObject[statsObject.indexQuestions].answer;
+  document.querySelector("#correctAnswer").textContent = currentStatObject[statsObject.indexQuestions].noteObject.note.slice(0,1);
+  renderNotes(currentStatObject[statsObject.indexQuestions].noteObject.note, modeObject.key, document.querySelector('#statNote'));
+
+  document.querySelector('#roundBack').style.display = statsObject.indexRounds == 0 ? "none" : "";
+  document.querySelector('#roundForward').style.display = statsObject.indexRounds == statsObject.rounds.length-1 ? "" : "round";
+}
+
+/**
+ * 
+ * @param {String} direction 
+ */
+function navigateStatQuestions(direction) {
+  
+  if(!statsObject.hasOwnProperty("indexQuestions")) {
+    Object.assign(statsObject, {indexQuestions: 0});
+  }
+
+  statsObject.indexQuestions += direction === "questionForward" || -1;
+
+  var currentStatObject = statsObject.rounds[statsObject.indexRounds];
+
+  //render current question of current round
+  document.querySelector("#userAnswer").textContent = currentStatObject[statsObject.indexQuestions].answer;
+  document.querySelector("#correctAnswer").textContent = currentStatObject[statsObject.indexQuestions].noteObject.note.slice(0,1);
+  renderNotes(currentStatObject[statsObject.indexQuestions].noteObject.note, modeObject.key, document.querySelector('#statNote'));
+
+  //show forward/back button or not
+  document.querySelector('#questionBack').style.display = statsObject.indexQuestions == 0 ? "none" : "";
+  document.querySelector('#questionForward').style.display = statsObject.indexQuestions == currentStatObject.length-1 ? "none" : "";
 }
 
 /**

@@ -65,15 +65,23 @@ function renderStats() {
   document.querySelectorAll(".modal").forEach(function(modal) {
     modal.style.display = "none";
   });
+  document.querySelector("#contact").style.display = "none";
+  document.querySelector("#game").style.display = "none";
 
-  var currentStatObject = statsObject.rounds[statsObject.rounds.length-1];
+  if(!statsObject.hasOwnProperty("indexRounds")) {
+    Object.assign(statsObject, {indexRounds: statsObject.rounds.length-1});
+  }
+
+  var currentStatObject = statsObject.rounds[statsObject.indexRounds];
 
   document.querySelector("#userAnswer").textContent = currentStatObject[0].answer;
   document.querySelector("#correctAnswer").textContent = currentStatObject[0].noteObject.note.slice(0,1);
-  renderNotes(currentStatObject[0].noteObject.note, modeObject.key, document.querySelector('#statNote'));
+  renderNotes(currentStatObject[statsObject.indexRounds].noteObject.note, modeObject.key, document.querySelector('#statNote'));
 
-  document.querySelector("#contact").style.display = "none";
-  document.querySelector("#game").style.display = "none";
+  statsObject.indexQuestions = 0;
+  document.querySelector("#questionBack").style.display = "none";
+  document.querySelector('#roundBack').style.display = statsObject.rounds.length > 1 ? "" : "none";
+  document.querySelector('#roundForward').style.display = "none";
   document.querySelector("#stats").style.display = "block";
 }
 
