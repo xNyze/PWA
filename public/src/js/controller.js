@@ -101,7 +101,9 @@ function setMode() {
  * @param {String} direction 
  */
 function navigateStatRounds(direction) {
+  console.warn(statsObject.indexRounds);
   statsObject.indexRounds += direction === "roundForward" || -1;
+  statsObject.indexQuestions = 0;
 
   var currentStatObject = statsObject.rounds[statsObject.indexRounds];
 

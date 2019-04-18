@@ -10,7 +10,7 @@ document.querySelector("#navGame").addEventListener("click", function() {
  * initializes the first noteObject and the modeObject, changes the answerBtns and renders the game content
  */
 document
-  .querySelectorAll(".play, .playBtn")
+  .querySelectorAll(".play, .playBtn, #playAgain")
   .forEach(playBtn => playBtn.addEventListener("click", function() {
     setMode();
     renderGame();
