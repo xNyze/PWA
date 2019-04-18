@@ -1,7 +1,7 @@
 /**
  * eventlistener for the navGame button
  */
-document.querySelector("#navGame").addEventListener("click", function() {
+document.querySelector("#navGame").addEventListener("click", function () {
   document.querySelector("#modeModal").style.display = "block";
 });
 
@@ -10,7 +10,7 @@ document.querySelector("#navGame").addEventListener("click", function() {
  * initializes the first noteObject and the modeObject, changes the answerBtns and renders the game content
  */
 document.querySelectorAll(".play, .playBtn, #playAgain").forEach(playBtn =>
-  playBtn.addEventListener("click", function() {
+  playBtn.addEventListener("click", function () {
     setMode();
     renderGame();
   })
@@ -26,7 +26,7 @@ document
 /**
  * eventlistener for the navContact button
  */
-document.querySelector("#navContact").addEventListener("click", function() {
+document.querySelector("#navContact").addEventListener("click", function () {
   document.querySelector("#stats").style.display = "none";
   document.querySelector("#game").style.display = "none";
   document.querySelector("#contact").style.display = "block";
@@ -41,7 +41,7 @@ function changeAnswerBtns() {
   shuffle(answers);
   var answerBtns = document.querySelectorAll("[id*=Button]");
   var i = 0;
-  answerBtns.forEach(function(button) {
+  answerBtns.forEach(function (button) {
     button.textContent = answers[i];
     i++;
   });
@@ -62,7 +62,7 @@ function shuffle(array) {
  * renders the stat div, hides all other in mainContent
  */
 function renderStats() {
-  document.querySelectorAll(".modal").forEach(function(modal) {
+  document.querySelectorAll(".modal").forEach(function (modal) {
     modal.style.display = "none";
   });
   document.querySelector("#contact").style.display = "none";
@@ -99,7 +99,7 @@ function renderStats() {
 function renderGame() {
   initNotes(document.querySelector(".keys:checked").id, true);
   changeAnswerBtns();
-  document.querySelectorAll(".modal").forEach(function(modal) {
+  document.querySelectorAll(".modal").forEach(function (modal) {
     modal.style.display = "none";
   });
   document.querySelector("#contact").style.display = "none";
@@ -121,7 +121,8 @@ function renderNotes(note, key, node) {
   var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
   renderer.resize(120, 150);
   var context = renderer.getContext();
-  var stave = new VF.Stave(10, 10, 100);
+  context.setViewBox(20, 20, 85, 85);
+  var stave = new VF.Stave(20, 20, 100);
   stave.addClef(key);
   stave.setContext(context).draw();
 
