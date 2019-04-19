@@ -158,6 +158,11 @@ nav {
   display: none;
 }
 
+#progress {
+  display: flex;
+  flex-direction: column;
+}
+
 #stats {
   display: none;
 }
