@@ -64,19 +64,30 @@ h2 {
 h3 {
   font-family: "Patrick Hand";
   text-decoration: underline;
+  color: #225479;
   font-size: 2.5em;
 }
 
 p1 {
+  display: block;
   font-family: "Patrick Hand";
-  text-align: left; /*does not*/
-  font-size: 1.4em;
+  padding: 10px;
+  color: #225479;
+  text-align: left;
+  font-size: 1.35em;
 }
+
+p2 {
+  font-family: "Patrick Hand";
+  padding: 10px;
+  font-size: 1.5em;
+}
+
 
 p3 {
   font-family: "Patrick Hand";
   font-size: 2em;
-  color: green;
+  color: #225479;
   text-decoration: underline;
 }
 
@@ -160,9 +171,55 @@ nav {
   display: none;
 }
 
+#progLabel {
+  font-family: "Patrick Hand";
+  font-size: 1.5em;
+}
+
 #progress {
   display: flex;
   flex-direction: column;
+  margin: auto;
+  height: 3vh;
+  width: 35vw;
+}
+
+#gameBtn {
+  display: block;
+  position: absolute;
+  left: 30%; /*quick and dirty*/
+  top: 60%;
+}
+
+.choiceBtn {
+  background: #FFF;
+  display: block;
+  height: 7.5vh;
+  width: 10vw;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 2px solid #000;
+}
+.choiceBtn:hover {
+  box-shadow: 0 2px 0 #000, 0 3px 0px 3px var(--orange);
+}
+.choiceBtn:active {
+  top: 4px;
+  padding-bottom: 0px;
+  box-shadow: 0 1px 0 #000;
+}
+.choiceBtn {
+  position: relative;
+  float: left;
+  font: normal 22px/25px "Patrick Hand", sans-serif;
+  margin-right: 10px;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #000;
+  transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
 }
 
 #stats {
