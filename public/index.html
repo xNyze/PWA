@@ -1,88 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="Stylesheet" href="./src/css/style.css" />
-    <link rel="shortcut icon" href="./src/img/icon.ico" type="image/ico"/>
-    <link rel="manifest" href="manifest.json">
-    <title>Noten Lernprogramm</title>
-  </head>
-  <body>
-    <script>
-    if('serviceWorker' in navigator) {
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="Stylesheet" href="./src/css/style.css" />
+  <link rel="shortcut icon" href="./src/img/icon.ico" type="image/ico" />
+  <link rel="manifest" href="manifest.json">
+  <title>Noten Lernprogramm</title>
+</head>
+
+<body>
+  <script>
+    if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').then(function () {
         console.log('SW registered');
       });
     } 
-    </script>
-    <!--wrapper-->
-    <div id="wrapper">
-      <!--Headline-->
-      <header>
-        <h1>Noten lernen leicht gemacht!</h1>
-      </header>
+  </script>
+  <!--wrapper-->
+  <div id="wrapper">
+    <!--Headline-->
+    <header>
+      <h1>Noten lernen leicht gemacht!</h1>
+    </header>
 
-      <!--Navbar-->
-      <nav>
-        <button id="navGame" class="navBtn">Lernspiel</button>
-        <button id="navStats" class="navBtn">Statistik</button>
-        <button id="navContact" class="navBtn">Kontakt</button>
-      </nav>
+    <!--Navbar-->
+    <nav>
+      <button id="navGame" class="navBtn">Lernspiel</button>
+      <button id="navStats" class="navBtn">Statistik</button>
+      <button id="navContact" class="navBtn">Kontakt</button>
+    </nav>
 
-      <!--Content-->
-      <div id="content">
+    <!--Content-->
+    <div id="content">
 
-        <div id="mainContent" class="mainContent">
-          <div id="game">
-            <button id="aButton">A</button>
-            <button id="bButton">B</button>
-            <button id="cButton">C</button>
-            <button id="dButton">D</button>
-            <label id=progLabel>Lernfortschritt</label>
-            <progress id="progress" value="0" max="100"></progress>
-            <div id="note">
-            </div>
+      <div id="mainContent" class="mainContent">
+        <div id="game">
+          <button id="aButton">A</button>
+          <button id="bButton">B</button>
+          <button id="cButton">C</button>
+          <button id="dButton">D</button>
+          <label id=progLabel>Lernfortschritt</label>
+          <progress id="progress" value="0" max="100"></progress>
+          <div id="note">
           </div>
+        </div>
 
-          <div id="stats">
-            <h2>Statistik</h2>
-            <p id="totalPoints"></p>
-            <div id="lastRound">
-              <button id="back" class="statsBtn"> << </button>
-              <p id="userAnswer"></p>
-              <p3 id="correctAnswer"></p3>
-              <div id="statNote"></div>
-              <button id="forward" class="statsBtn"> >> </button>
-            </div>
+        <div id="stats">
+          <h2>Statistik</h2>
+          <p id="totalPoints"></p>
+          <button id="roundBack" class="statsBtn"> &lt; </button>
+          <button id="roundForward" class="statsBtn"> &gt; </button>
+          <div id="shownRound">
+            <button id="questionBack" class="statsBtn"> &lt;&lt; </button>
+            <button id="questionForward" class="statsBtn"> &gt;&gt; </button>
+            <p id="userAnswer">
+            </p>
+            <p3 id="correctAnswer"></p3>
+            <div id="statNote"></div>
           </div>
+        </div>
 
-          <div id="contact">
-            <h2>Kontakt</h2>
-          </div>
+        <div id="contact">
+          <h2>Kontakt</h2>
+        </div>
       </div>
 
       <div id="description">
-          <h3>Spielbeschreibung</h3>
-            <p1>
-            Spielziel ist es, die abgebildeten <br />
-            Noten nacheinander richtig zu<br />
-            bestimmen. Dabei darf der<br />
-            Spieler zwischen einem Bass-<br />
-            oder Violinenschlüssel sowie drei<br />
-            Schwierigkeitsgraden frei wählen.<br />
-            Ein Spieldurchlauf gilt als<br />
-            abgeschlossen wenn der<br />
-            Lernerfortschritt vollständig<br />
-            erreicht wurde.
-          </p1>
+        <h3>Spielbeschreibung</h3>
+        <p1>
+          Spielziel ist es, die abgebildeten <br />
+          Noten nacheinander richtig zu<br />
+          bestimmen. Dabei darf der<br />
+          Spieler zwischen einem Bass-<br />
+          oder Violinenschlüssel, sowie drei<br />
+          Schwierigkeitsgraden, frei wählen.<br />
+          Ein Spieldurchlauf gilt als<br />
+          abgeschlossen, wenn der<br />
+          Lernerfortschritt vollständig<br />
+          erreicht wurde.
+        </p1>
       </div>
 
-      <!--Footer-->
-      <footer>
-        <p>Footer</p>
-      </footer>
     </div>
 
     <!--Modal Finish-->
@@ -98,7 +99,7 @@
     <div id="modeModal" class="modal">
       <div id="mode">
         <p1>Bitte wähle eine Schwierigkeit aus.</p1>
-        
+
         <form action="">
           <label for="easyMode">Leicht</label>
           <input type="radio" name="modes" id="easyMode" checked="checked"></input>
@@ -107,28 +108,30 @@
           <label for="hardMode">Schwer</label>
           <input type="radio" name="modes" id="hardMode"></input>
         </form>
-        
+
         <form>
-            <label for="violinKey">Violinenschlüssel</label>
-            <input type="radio" class="keys" name="keys" id="treble" checked="checked"/>
-            <label for="bassKey">Bassschlüssel</label>
-            <input type="radio" class="keys" name="keys" id="bass"/>
+          <label for="violinKey">Violinenschlüssel</label>
+          <input type="radio" class="keys" name="keys" id="treble" checked="checked" />
+          <label for="bassKey">Bassschlüssel</label>
+          <input type="radio" class="keys" name="keys" id="bass" />
         </form>
 
         <!--<button id="play" class="play">Spielen!</button>-->
         <div class='container'>
-          <a href='#'class='playBtn'>
-            
-          <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In  -->
-          <svg version="1.1"
-            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-            x="0px" y="0px" width="213.7px" height="213.7px" viewBox="0 0 213.7 213.7" enable-background="new 0 0 213.7 213.7"
-             xml:space="preserve">
-        
-          <polygon class='triangle' id="XMLID_18_" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
-            73.5,62.5 148.5,105.8 73.5,149.1 "/> <!--need to adapt the stats! -> smaller-->
-          <circle class='circle' id="XMLID_17_" fill="none"  stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="106.8" cy="106.8" r="103.3"/>
-          </svg>      
+          <a href='#' class='playBtn'>
+
+            <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In  -->
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="213.7px"
+              height="213.7px" viewBox="0 0 213.7 213.7" enable-background="new 0 0 213.7 213.7" xml:space="preserve">
+
+              <polygon class='triangle' id="XMLID_18_" fill="none" stroke-width="7" stroke-linecap="round"
+                stroke-linejoin="round" stroke-miterlimit="10" points="
+            73.5,62.5 148.5,105.8 73.5,149.1 " />
+              <!--need to adapt the stats! -> smaller-->
+              <circle class='circle' id="XMLID_17_" fill="none" stroke-width="7" stroke-linecap="round"
+                stroke-linejoin="round" stroke-miterlimit="10" cx="106.8" cy="106.8" r="103.3" />
+            </svg>
           </a>
         </div>
 
@@ -139,5 +142,6 @@
     <script src="./src/js/model.js"></script>
     <script src="./src/js/view.js"></script>
     <script src="./src/js/controller.js"></script>
-  </body>
+</body>
+
 </html>

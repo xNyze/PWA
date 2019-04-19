@@ -1,7 +1,7 @@
 /**
  * eventlistener for the navGame button
  */
-document.querySelector("#navGame").addEventListener("click", function() {
+document.querySelector("#navGame").addEventListener("click", function () {
   document.querySelector("#modeModal").style.display = "block";
 });
 
@@ -9,12 +9,12 @@ document.querySelector("#navGame").addEventListener("click", function() {
  * eventlistener for the play buttons
  * initializes the first noteObject and the modeObject, changes the answerBtns and renders the game content
  */
-document
-  .querySelectorAll(".play, .playBtn")
-  .forEach(playBtn => playBtn.addEventListener("click", function() {
+document.querySelectorAll(".play, .playBtn, #playAgain").forEach(playBtn =>
+  playBtn.addEventListener("click", function () {
     setMode();
     renderGame();
-  }));
+  })
+);
 
 /**
  * eventlistener for the 'show statistic' buttons
@@ -26,7 +26,7 @@ document
 /**
  * eventlistener for the navContact button
  */
-document.querySelector("#navContact").addEventListener("click", function() {
+document.querySelector("#navContact").addEventListener("click", function () {
   document.querySelector("#stats").style.display = "none";
   document.querySelector("#game").style.display = "none";
   document.querySelector("#contact").style.display = "block";
@@ -41,7 +41,7 @@ function changeAnswerBtns() {
   shuffle(answers);
   var answerBtns = document.querySelectorAll("[id*=Button]");
   var i = 0;
-  answerBtns.forEach(function(button) {
+  answerBtns.forEach(function (button) {
     button.textContent = answers[i];
     i++;
   });
@@ -62,18 +62,34 @@ function shuffle(array) {
  * renders the stat div, hides all other in mainContent
  */
 function renderStats() {
-  document.querySelectorAll(".modal").forEach(function(modal) {
+  document.querySelectorAll(".modal").forEach(function (modal) {
     modal.style.display = "none";
   });
-
-  var currentStatObject = statsObject.rounds[statsObject.rounds.length-1];
-
-  document.querySelector("#userAnswer").textContent = currentStatObject[0].answer;
-  document.querySelector("#correctAnswer").textContent = currentStatObject[0].noteObject.note.slice(0,1);
-  renderNotes(currentStatObject[0].noteObject.note, modeObject.key, document.querySelector('#statNote'));
-
   document.querySelector("#contact").style.display = "none";
   document.querySelector("#game").style.display = "none";
+
+  if (!statsObject.hasOwnProperty("indexRounds")) {
+    Object.assign(statsObject, { indexRounds: statsObject.rounds.length - 1 });
+  }
+
+  var currentStatObject = statsObject.rounds[statsObject.indexRounds];
+
+  document.querySelector("#userAnswer").textContent =
+    currentStatObject[0].answer;
+  document.querySelector(
+    "#correctAnswer"
+  ).textContent = currentStatObject[0].noteObject.note.slice(0, 1);
+  renderNotes(
+    currentStatObject[statsObject.indexRounds].noteObject.note,
+    modeObject.key,
+    document.querySelector("#statNote")
+  );
+
+  statsObject.indexQuestions = 0;
+  document.querySelector("#questionBack").style.display = "none";
+  document.querySelector("#roundBack").style.display =
+    statsObject.rounds.length > 1 ? "" : "none";
+  document.querySelector("#roundForward").style.display = "none";
   document.querySelector("#stats").style.display = "block";
 }
 
@@ -83,7 +99,7 @@ function renderStats() {
 function renderGame() {
   initNotes(document.querySelector(".keys:checked").id, true);
   changeAnswerBtns();
-  document.querySelectorAll(".modal").forEach(function(modal) {
+  document.querySelectorAll(".modal").forEach(function (modal) {
     modal.style.display = "none";
   });
   document.querySelector("#contact").style.display = "none";
@@ -98,21 +114,22 @@ function renderGame() {
  * @param {DOM element} node
  */
 function renderNotes(note, key, node) {
-    node.innerHTML = "";
-    var div = node;
-  
-    VF = Vex.Flow;
-    var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-    renderer.resize(120, 150);
-    var context = renderer.getContext();
-    var stave = new VF.Stave(10, 10, 100);
-    stave.addClef(key);
-    stave.setContext(context).draw();
-  
-    var notes = [new VF.StaveNote({ clef: key, keys: note, duration: "q" })];
-  
-    var voice = new VF.Voice({ num_beats: 1, beat_value: 4 });
-    voice.addTickables(notes);
-    var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 50);
-    voice.draw(context, stave);
-  }
+  node.innerHTML = "";
+  var div = node;
+
+  VF = Vex.Flow;
+  var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+  renderer.resize(120, 150);
+  var context = renderer.getContext();
+  context.setViewBox(20, 20, 85, 85);
+  var stave = new VF.Stave(20, 20, 100);
+  stave.addClef(key);
+  stave.setContext(context).draw();
+
+  var notes = [new VF.StaveNote({ clef: key, keys: note, duration: "q" })];
+
+  var voice = new VF.Voice({ num_beats: 1, beat_value: 4 });
+  voice.addTickables(notes);
+  var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 50);
+  voice.draw(context, stave);
+}
