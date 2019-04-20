@@ -76,6 +76,8 @@ function renderStats() {
 
   if (!statsObject.hasOwnProperty("indexRounds")) {
     Object.assign(statsObject, { indexRounds: statsObject.rounds.length - 1 });
+  } else {
+    statsObject.indexRounds = statsObject.rounds.length - 1;
   }
 
   var currentStatObject = statsObject.rounds[statsObject.indexRounds];

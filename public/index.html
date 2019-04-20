@@ -38,7 +38,7 @@
             <button id="cButton" class=choiceBtn>C</button>
             <button id="dButton" class=choiceBtn>D</button>
           </div>
-          <p id=progLabel>Ihr aktueller Lernfortschritt:</p>
+          <p id=progLabel>Spielfortschritt:</p>
           <progress id="progress" value="0" max="100"></progress>
           <div id="note">
           </div>
@@ -62,11 +62,18 @@
         <div id="contact">
           <h2>Kontakt</h2>
           <div id="paulC">
-            <p>Paul Christ, Back-End Enwickler</p>
+            <p>Paul Christ - Javascript</p>
+            <div class="social-containers">
+              <ul class="social-icons">
+                <li><a target="_blank" href="https://www.linkedin.com/in/paul-christ-9a0842165/">
+                    <i class="fa fa-linkedin"></i>
+                  </a></li>
+                <li><a target="_blank" href="https://github.com/plc-dev"><i class="fa fa-github"></i></a></li>
+              </ul>
+            </div>
           </div>
           <div id="paulZ">
-            <p>Paul Zänker, Front-End Entwickler</p>
-
+            <p>Paul Zänker - Design, HTML, CSS</p>
             <div class="social-container">
               <ul class="social-icons">
                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
@@ -87,14 +94,13 @@
           Noten nacheinander richtig zu<br />
           bestimmen. Dabei darf der<br />
           Spieler zwischen einem Bass-<br />
-          oder Violinenschlüssel sowie drei<br />
+          oder Violinenschlüssel, sowie drei<br />
           Schwierigkeitsgraden frei wählen.<br />
-          Der Spieler kann zwischen vier<br />
-          Antworten eine auswählen.<br />
+          Der Spieler wählt eine der<br />
+          vier Antworten aus.<br />
           Ein Spieldurchlauf gilt als<br />
-          abgeschlossen wenn der<br />
-          Lernerfortschritt vollständig<br />
-          erreicht wurde.
+          abgeschlossen, wenn alle<br />
+          Fragen beantwortet wurden.<br />
         </p1>
       </div>
 
@@ -127,9 +133,9 @@
         </form>
 
         <form>
-          <label for="violinKey">Violinenschlüssel</label>
+          <label for="treble">Violinenschlüssel</label>
           <input type="radio" class="keys" name="keys" id="treble" checked="checked" />
-          <label for="bassKey">Bassschlüssel</label>
+          <label for="bass">Bassschlüssel</label>
           <input type="radio" class="keys" name="keys" id="bass" />
         </form>
 

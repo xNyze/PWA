@@ -257,6 +257,11 @@ nav {
   grid-template-areas: "h2 h2" "paulC paulZ";
 }
 
+#contact div p {
+  font-family: "Patrick Hand";
+  font-size: 25px;
+}
+
 #paulC {
   grid-area: paulC;
   margin-left: 7.5vw;
