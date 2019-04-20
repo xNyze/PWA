@@ -1,7 +1,7 @@
-self.addEventListener("install", function() {
+self.addEventListener("install", function () {
   console.log("SW Installed");
   event.waitUntil(
-    caches.open("static").then(function(cache) {
+    caches.open("static").then(function (cache) {
       cache.addAll([
         "/",
         "/index.html",
@@ -18,13 +18,13 @@ self.addEventListener("install", function() {
   );
 });
 
-self.addEventListener("activate", function() {
+self.addEventListener("activate", function () {
   console.log("SW Activated");
 });
 
-self.addEventListener("fetch", function(event) {
+self.addEventListener("fetch", function (event) {
   event.respondWith(
-    caches.match(event.request).then(function(res) {
+    caches.match(event.request).then(function (res) {
       if (res) {
         return res;
       } else {

@@ -45,16 +45,10 @@ function statistic(clickedID) {
   var round = [];
 
   var problem = {
-    answer: document.getElementById(clickedID).textContent,
-    outcome:
-      document.getElementById(clickedID).textContent == noteObject.answers[0]
-        ? true
-        : false,
-    points:
-      document.getElementById(clickedID).textContent == noteObject.answers[0]
-        ? modeObject.pointsForMode
-        : 0,
-    noteObject: noteObject
+    "answer": document.getElementById(clickedID).textContent,
+    "outcome": document.getElementById(clickedID).textContent == noteObject.answers[0] ? true : false,
+    "points": document.getElementById(clickedID).textContent == noteObject.answers[0] ? modeObject.pointsForMode : 0,
+    "noteObject": noteObject
   };
 
   statsObject.totalPoints += problem.points;
@@ -113,6 +107,7 @@ function navigateStatRounds(direction) {
   statsObject.indexRounds += direction === "roundForward" || -1;
   statsObject.indexQuestions = 0;
   document.querySelector("#questionBack").style.display = "none";
+  document.querySelector("#questionForward").style.display = "";
 
   var currentStatObject = statsObject.rounds[statsObject.indexRounds];
 

@@ -2,7 +2,9 @@
  * eventlistener for the navGame button
  */
 document.querySelector("#navGame").addEventListener("click", function () {
-  document.querySelector("#modeModal").style.display = "block";
+  if (document.querySelector('#game').style.display != "block") {
+    document.querySelector("#modeModal").style.display = "block";
+  }
 });
 
 /**
@@ -19,9 +21,7 @@ document.querySelectorAll(".play, .playBtn, #playAgain").forEach(playBtn =>
 /**
  * eventlistener for the 'show statistic' buttons
  */
-document
-  .querySelectorAll("#showStatistic, #navStats")
-  .forEach(stats => stats.addEventListener("click", renderStats));
+document.querySelectorAll("#showStatistic, #navStats").forEach(stats => stats.addEventListener("click", renderStats));
 
 /**
  * eventlistener for the navContact button
@@ -73,22 +73,14 @@ function renderStats() {
   }
 
   var currentStatObject = statsObject.rounds[statsObject.indexRounds];
-
-  document.querySelector("#userAnswer").textContent =
-    currentStatObject[0].answer;
-  document.querySelector(
-    "#correctAnswer"
-  ).textContent = currentStatObject[0].noteObject.note.slice(0, 1);
-  renderNotes(
-    currentStatObject[statsObject.indexRounds].noteObject.note,
-    modeObject.key,
-    document.querySelector("#statNote")
-  );
-
   statsObject.indexQuestions = 0;
+
+  document.querySelector("#userAnswer").textContent = currentStatObject[statsObject.indexQuestions].answer;
+  document.querySelector("#correctAnswer").textContent = currentStatObject[statsObject.indexQuestions].noteObject.note.slice(0, 1);
+  renderNotes(currentStatObject[statsObject.indexQuestions].noteObject.note, modeObject.key, document.querySelector("#statNote"));
+
   document.querySelector("#questionBack").style.display = "none";
-  document.querySelector("#roundBack").style.display =
-    statsObject.rounds.length > 1 ? "" : "none";
+  document.querySelector("#roundBack").style.display = statsObject.rounds.length > 1 ? "" : "none";
   document.querySelector("#roundForward").style.display = "none";
   document.querySelector("#stats").style.display = "block";
 }

@@ -12,13 +12,6 @@
 </head>
 
 <body>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').then(function () {
-        console.log('SW registered');
-      });
-    } 
-  </script>
   <!--wrapper-->
   <div id="wrapper">
     <!--Headline-->
@@ -31,6 +24,7 @@
       <button id="navGame" class="navBtn">Lernspiel</button>
       <button id="navStats" class="navBtn">Statistik</button>
       <button id="navContact" class="navBtn">Kontakt</button>
+      <button id="navPush" class="navBtn">Push</button>
     </nav>
 
     <!--Content-->
@@ -137,7 +131,7 @@
 
       </div>
     </div>
-
+    <script src="src/js/regSW.js"></script>
     <script src="./src/js/vexflow-min.js"></script>
     <script src="./src/js/model.js"></script>
     <script src="./src/js/view.js"></script>
