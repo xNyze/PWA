@@ -125,6 +125,7 @@ function navigateStatQuestions(direction) {
     Object.assign(statsObject, { indexQuestions: 0 });
   }
 
+  statsObject.indexRounds = statsObject.rounds.length - 1;
   statsObject.indexQuestions += direction === "questionForward" || -1;
 
   var currentStatObject = statsObject.rounds[statsObject.indexRounds];

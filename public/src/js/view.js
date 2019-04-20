@@ -2,16 +2,29 @@
  * eventlistener for the navGame button
  */
 document.querySelector("#navGame").addEventListener("click", function () {
-  if (document.querySelector('#game').style.display != "block") {
+  if (document.querySelector('#game').style.display != "block" && document.querySelector("#progress").value == 0) {
     document.querySelector("#modeModal").style.display = "block";
+  } else if (document.querySelector("#progress").value != 0) {
+    document.querySelector('#contact').style.display = "none";
+    document.querySelector('#stats').style.display = "none";
+    document.querySelector('#game').style.display = "block";
   }
 });
+
+/**
+ * eventlistener for the playAgain button
+ */
+document.querySelector('#playAgain').addEventListener("click", function () {
+  document.querySelector("#finModal").style.display = "none";
+  document.querySelector("#modeModal").style.display = "block";
+});
+
 
 /**
  * eventlistener for the play buttons
  * initializes the first noteObject and the modeObject, changes the answerBtns and renders the game content
  */
-document.querySelectorAll(".play, .playBtn, #playAgain").forEach(playBtn =>
+document.querySelectorAll(".play, .playBtn").forEach(playBtn =>
   playBtn.addEventListener("click", function () {
     setMode();
     renderGame();
@@ -88,6 +101,7 @@ function renderStats() {
   renderNotes(currentStatObject[statsObject.indexQuestions].noteObject.note, modeObject.key, document.querySelector("#statNote"));
 
   document.querySelector("#questionBack").style.display = "none";
+  document.querySelector("#questionForward").style.display = "";
   document.querySelector("#roundBack").style.display = statsObject.rounds.length > 1 ? "" : "none";
   document.querySelector("#roundForward").style.display = "none";
   document.querySelector("#stats").style.display = "block";

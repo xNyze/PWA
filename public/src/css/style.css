@@ -148,7 +148,7 @@ nav {
 
 #content {
   grid-area: content;
-  height: 80vh;
+  height: auto;
   width: 80vw;
   display: grid;
   background-color: #f9fbe8;
