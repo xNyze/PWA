@@ -21,7 +21,13 @@ document.querySelectorAll(".play, .playBtn, #playAgain").forEach(playBtn =>
 /**
  * eventlistener for the 'show statistic' buttons
  */
-document.querySelectorAll("#showStatistic, #navStats").forEach(stats => stats.addEventListener("click", renderStats));
+document.querySelectorAll("#showStatistic, #navStats").forEach(stats => stats.addEventListener("click", function () {
+  if (!!statsObject.rounds.length) {
+    renderStats();
+  } else {
+    window.alert('Keine Statistik vorhanden.');
+  }
+}));
 
 /**
  * eventlistener for the navContact button

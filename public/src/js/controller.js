@@ -11,9 +11,7 @@ navButtons.forEach(function (navButton) {
 /**
  * creating eventlisteners for question forward/back button
  */
-var statQuestionBtns = document.querySelectorAll(
-  "#questionForward, #questionBack"
-);
+var statQuestionBtns = document.querySelectorAll("#questionForward, #questionBack");
 statQuestionBtns.forEach(function (btn) {
   btn.addEventListener("click", function () {
     navigateStatQuestions(this.id);
@@ -103,7 +101,6 @@ function setMode() {
  * @param {String} direction
  */
 function navigateStatRounds(direction) {
-  console.warn(statsObject.indexRounds);
   statsObject.indexRounds += direction === "roundForward" || -1;
   statsObject.indexQuestions = 0;
   document.querySelector("#questionBack").style.display = "none";

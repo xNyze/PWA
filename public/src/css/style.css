@@ -251,7 +251,7 @@ nav {
 }
 
 #contact {
-  display: grid;
+  display: block;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
   grid-template-areas: "h2 h2" "paulC paulZ";
