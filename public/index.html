@@ -24,7 +24,7 @@
       <button id="navGame" class="navBtn">Lernspiel</button>
       <button id="navStats" class="navBtn">Statistik</button>
       <button id="navContact" class="navBtn">Kontakt</button>
-      <button id="navPush" class="navBtn">Push</button>
+      <button id="navPush" class="navBtn" style="display: none;">Push</button>
     </nav>
 
     <!--Content-->
@@ -32,11 +32,13 @@
 
       <div id="mainContent" class="mainContent">
         <div id="game">
-          <button id="aButton">A</button>
-          <button id="bButton">B</button>
-          <button id="cButton">C</button>
-          <button id="dButton">D</button>
-          <label id=progLabel>Lernfortschritt</label>
+          <div id=gameBtn>
+            <button id="aButton" class=choiceBtn>A</button>
+            <button id="bButton" class=choiceBtn>B</button>
+            <button id="cButton" class=choiceBtn>C</button>
+            <button id="dButton" class=choiceBtn>D</button>
+          </div>
+          <p id=progLabel>Ihr aktueller Lernfortschritt:</p>
           <progress id="progress" value="0" max="100"></progress>
           <div id="note">
           </div>
@@ -45,20 +47,34 @@
         <div id="stats">
           <h2>Statistik</h2>
           <p id="totalPoints"></p>
-          <button id="roundBack" class="statsBtn"> &lt; </button>
-          <button id="roundForward" class="statsBtn"> &gt; </button>
-          <div id="shownRound">
-            <button id="questionBack" class="statsBtn"> &lt;&lt; </button>
-            <button id="questionForward" class="statsBtn"> &gt;&gt; </button>
-            <p id="userAnswer">
-            </p>
-            <p3 id="correctAnswer"></p3>
-            <div id="statNote"></div>
+          <div id="lastRound">
+            <button id="back" class="statsBtn">
+              << </button> <p id="userAnswer">
+                </p>
+                <p3 id="correctAnswer"></p3>
+                <div id="statNote"></div>
+                <button id="forward" class="statsBtn"> >> </button>
           </div>
         </div>
 
         <div id="contact">
           <h2>Kontakt</h2>
+          <div id="paulC">
+            <p>Paul Christ, Back-End Enwickler</p>
+          </div>
+          <div id="paulZ">
+            <p>Paul Zänker, Front-End Entwickler</p>
+
+            <div class="social-container">
+              <ul class="social-icons">
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-google"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-github"></i></a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -69,22 +85,27 @@
           Noten nacheinander richtig zu<br />
           bestimmen. Dabei darf der<br />
           Spieler zwischen einem Bass-<br />
-          oder Violinenschlüssel, sowie drei<br />
-          Schwierigkeitsgraden, frei wählen.<br />
+          oder Violinenschlüssel sowie drei<br />
+          Schwierigkeitsgraden frei wählen.<br />
+          Der Spieler kann zwischen vier<br />
+          Antworten eine auswählen.<br />
           Ein Spieldurchlauf gilt als<br />
-          abgeschlossen, wenn der<br />
+          abgeschlossen wenn der<br />
           Lernerfortschritt vollständig<br />
           erreicht wurde.
         </p1>
       </div>
 
+      <!--Footer-->
+      <footer>
+      </footer>
     </div>
 
     <!--Modal Finish-->
     <div id="finModal" class="modal">
       <div id="finish">
-        <p1>Geschafft!</p1>
-        <button id="playAgain" class="finishBtn">Nochmal Spielen!</button>
+        <h2>Geschafft!</h2>
+        <button id="playAgain" class="finishBtn">Nochmal Spielen</button>
         <button id="showStatistic" class="finishBtn">Statistik anzeigen</button>
       </div>
     </div>
@@ -92,7 +113,7 @@
     <!--Modal Mode-->
     <div id="modeModal" class="modal">
       <div id="mode">
-        <p1>Bitte wähle eine Schwierigkeit aus.</p1>
+        <p2>Bitte wähle eine Schwierigkeit aus.</p2>
 
         <form action="">
           <label for="easyMode">Leicht</label>
@@ -131,7 +152,7 @@
 
       </div>
     </div>
-    <script src="src/js/regSW.js"></script>
+    <script src="./src/js/regSW.js"></script>
     <script src="./src/js/vexflow-min.js"></script>
     <script src="./src/js/model.js"></script>
     <script src="./src/js/view.js"></script>
