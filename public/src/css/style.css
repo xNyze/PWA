@@ -91,6 +91,11 @@ p3 {
   text-decoration: underline;
 }
 
+p4 {
+  font-family: "Patrick Hand";
+  font-size: 1.5em;
+}
+
 nav {
   grid-area: nav;
   height: auto;
@@ -164,11 +169,15 @@ nav {
   background-color: #f9fbe8;
   border: 3px solid black;
   border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
 }
 
 #game {
   display: none;
+  height: 78vh;
+  width: 60vw;
+  background: url(../img/bowman.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
 #progLabel {
@@ -255,11 +264,7 @@ nav {
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
   grid-template-areas: "h2 h2" "paulC paulZ";
-}
-
-#contact div p {
-  font-family: "Patrick Hand";
-  font-size: 25px;
+  border-top-right-radius: 18px; 
 }
 
 #paulC {
