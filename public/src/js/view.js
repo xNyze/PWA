@@ -52,6 +52,14 @@ document.querySelector("#navContact").addEventListener("click", function () {
 });
 
 /**
+ * eventlistener for the description
+ */
+document.querySelector('#click').addEventListener("click", function () {
+  document.querySelector("#descriptionClose").style.display = "none";
+  document.querySelector("#descriptionOpen").style.display = "block";
+});
+
+/**
  * changes the textContent of the answerButtons to the according answer possibilities after
  * shuffling the array ob the global noteObject
  */

@@ -175,7 +175,7 @@ nav {
   display: none;
   height: 78vh;
   width: 60vw;
-  background: url(../img/bowman.png);
+  background: url(../img/mozart_3.png);
   background-repeat: no-repeat;
   background-position: bottom;
 }
@@ -197,7 +197,7 @@ nav {
   display: block;
   position: absolute;
   left: 30%; /*quick and dirty*/
-  top: 60%;
+  top: 50%;
 }
 
 .choiceBtn {
@@ -336,7 +336,25 @@ nav {
   transition: all 265ms ease-in;
 }
 
-#description {
+#descriptionClose {
+  grid-area: description;
+  height: auto;
+  width: 20vw;
+  align-items: center;
+  border-top-left-radius: 18px;
+  background: var(--blue) url(../img/mozart.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+#click {
+  position: relative;
+  text-align: center;
+  margin-top: 5vh;
+}
+
+#descriptionOpen {
+  display: none;
   grid-area: description;
   height: auto;
   width: 20vw;
