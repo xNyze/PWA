@@ -479,28 +479,79 @@ nav {
     width: 100vw;
   }
 
+  h1 {
+    margin-top: 1vh;
+    font-size: 7vw;
+  }
+
+  h2 {
+    font-size: 8vw;
+  }
+
   nav {
     grid-area: nav;
     height: 10vh;
     width: 100vw;
     flex-direction: row;
+    border-top-right-radius: 0px;
   }
 
-  #content {
-    grid-area: content;
-    height: 70vh;
-    width: 100vw;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(1, auto);
-    grid-template-areas: "mainContent" "description";
+  .navBtn {
+    height: 5vh;
+    width: 25vw;
+    font-size: 1.2em;
+    padding: 0px;
   }
+    #content {
+      grid-area: content;
+      height: auto;
+      height: 85vh;
+      width: 98.3vw;
+    }
+    
+    #mainContent {
+      height: 85vh;
+      width: 98.3vw;
+      border-top-left-radius: 0px;
+    }
+
+    #paulC {
+      grid-area: paulC;
+      margin-left: 20vw;
+      height: 20vh;
+      width: 60vw;
+    }
+    
+    #paulZ {
+      grid-area: paulZ;
+      margin-top: 5vh;
+      margin-left: 20vw;
+      height: 25vh;
+      width: 60vw;
+    }
+
+    #paulZ li:nth-child(1), #paulZ li:nth-child(2) {
+      display: none;
+    }
+
+    
+
+
+
+
+
+
 
   #game {
     height: 70;
     width: 100;
   }
 
-  #description {
+  #descriptionClose {
+    display: none;
+  }
+  
+  #descriptionOpen {
     display: none;
   }
 }
