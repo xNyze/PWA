@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="Stylesheet" href="./src/css/style.css" />
-  <link rel="shortcut icon" href="./src/img/icon.ico" type="image/ico" />
   <link rel="manifest" href="manifest.json">
+  <link rel="Stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
   <title>Noten Lernprogramm</title>
 </head>
 
@@ -21,9 +22,9 @@
 
     <!--Navbar-->
     <nav>
-      <button id="navGame" class="navBtn">Lernspiel</button>
-      <button id="navStats" class="navBtn">Statistik</button>
-      <button id="navContact" class="navBtn">Kontakt</button>
+      <button id="navGame" class="navBtn"><i class="fas fa-gamepad"></i> Lernspiel</button>
+      <button id="navStats" class="navBtn"><i class="fas fa-flag-checkered"></i> Statistik</button>
+      <button id="navContact" class="navBtn"><i class="fas fa-mail-bulk"></i> Kontakt</button>
       <button id="navPush" class="navBtn" style="display: none;">Push</button>
     </nav>
 
@@ -66,9 +67,9 @@
             <div class="social-containers">
               <ul class="social-icons">
                 <li><a target="_blank" href="https://www.linkedin.com/in/paul-christ-9a0842165/">
-                    <i class="fa fa-linkedin"></i>
+                  <i class="fab fa-linkedin"></i>
                   </a></li>
-                <li><a target="_blank" href="https://github.com/plc-dev"><i class="fa fa-github"></i></a></li>
+                <li><a target="_blank" href="https://github.com/plc-dev"><i class="fab fa-github"></i></a></li>
               </ul>
             </div>
           </div>
@@ -77,13 +78,13 @@
             <div class="social-container">
               <ul class="social-icons">
                 <li><a target="_blank" href="https://soundcloud.com/jcpauletto">
-                  <i class="fa fa-soundcloud"></i></a></li>
+                  <i class="fab fa-soundcloud"></i></a></li>
               <li><a target="_blank" href="https://www.facebook.com/paulozaenker">
-                  <i class="fa fa-facebook"></i></a></li>
+                <i class="fab fa-facebook-f"></i></a></li>
               <li><a target="_blank" href="https://www.linkedin.com/in/paul-z%C3%A4nker/">
-                  <i class="fa fa-linkedin"></i></a></li>
+                <i class="fab fa-linkedin"></i></a></li>
                <li><a target="_blank" href="https://github.com/xNyze">
-                  <i class="fa fa-github"></i></a></li>
+                <i class="fab fa-github"></i></a></li>
               </ul>
             </div>
           </div>
@@ -91,7 +92,7 @@
       </div>
       
       <div id="descriptionClose">
-        <button id='click'>Click me!</button>
+        <button id='descriptionBtn'><i class="fas fa-scroll"></i> Spielbeschreibung</button>
       </div>
 
       <div id="descriptionOpen">
@@ -127,11 +128,11 @@
         <p2>Bitte wähle eine Schwierigkeit aus.</p2>
 
         <form action="">
-          <label for="easyMode">Leicht</label>
+          <label for="easyMode" class="modeText">Leicht</label>
           <input type="radio" name="modes" id="easyMode" checked="checked"></input>
-          <label for="mediumMode">Mittel</label>
+          <label for="mediumMode" class="modeText">Mittel</label>
           <input type="radio" name="modes" id="mediumMode"></input>
-          <label for="hardMode">Schwer</label>
+          <label for="hardMode" class="modeText">Schwer</label>
           <input type="radio" name="modes" id="hardMode"></input>
         </form>
 
@@ -153,7 +154,7 @@
 
               <polygon class='triangle' id="XMLID_18_" fill="none" stroke-width="7" stroke-linecap="round"
                 stroke-linejoin="round" stroke-miterlimit="10" points="
-            73.5,62.5 148.5,105.8 73.5,149.1 " />
+                73.5,62.5 148.5,105.8 73.5,149.1 " />
               <!--need to adapt the stats! -> smaller-->
               <circle class='circle' id="XMLID_17_" fill="none" stroke-width="7" stroke-linecap="round"
                 stroke-linejoin="round" stroke-miterlimit="10" cx="106.8" cy="106.8" r="103.3" />

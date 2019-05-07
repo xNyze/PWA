@@ -54,7 +54,7 @@ document.querySelector("#navContact").addEventListener("click", function () {
 /**
  * eventlistener for the description
  */
-document.querySelector('#click').addEventListener("click", function () {
+document.querySelector('#descriptionBtn').addEventListener("click", function () {
   document.querySelector("#descriptionClose").style.display = "none";
   document.querySelector("#descriptionOpen").style.display = "block";
 });

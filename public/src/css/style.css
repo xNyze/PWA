@@ -117,7 +117,7 @@ nav {
   height: 10vh;
   width: 15vw;
   font-family: "Patrick Hand";
-  font-size: 1.8em;
+  font-size: 1.5em;
   padding: 0 2em;
   cursor: pointer;
   transition: 800ms ease all;
@@ -175,7 +175,7 @@ nav {
   display: none;
   height: 78vh;
   width: 60vw;
-  background: url(../img/mozart_3.png);
+  background: url(../img/mozart_desktop.png);
   background-repeat: no-repeat;
   background-position: bottom;
 }
@@ -217,6 +217,7 @@ nav {
   padding-bottom: 0px;
   box-shadow: 0 1px 0 #000;
 }
+
 .choiceBtn {
   position: relative;
   float: left;
@@ -347,12 +348,6 @@ nav {
   background-position: bottom;
 }
 
-#click {
-  position: relative;
-  text-align: center;
-  margin-top: 5vh;
-}
-
 #descriptionOpen {
   display: none;
   grid-area: description;
@@ -360,6 +355,50 @@ nav {
   width: 20vw;
   background-color: var(--blue);
   border-top-left-radius: 18px;
+}
+
+/*similar to navBtn, only height and width changed -> dont know how to implement this easier!!!*/
+#descriptionBtn {
+  margin-top: 4vh;
+  background: #225479;
+  color: #fff;
+  border: none;
+  position: relative;
+  height: 10vh;
+  width: 17vw;
+  font-family: "Patrick Hand";
+  font-size: 1.35em;
+  padding: 0 2em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+}
+
+#descriptionBtn:hover {
+  background: var(--orange);
+  color: #225479;
+}
+#descriptionBtn:before,
+#descriptionBtn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #225479;
+  transition: 400ms ease all;
+}
+#descriptionBtn:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+#descriptionBtn:hover:before,
+#descriptionBtn:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
 }
 
 .modal {
@@ -378,11 +417,19 @@ nav {
 #mode {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #000;
   border-radius: 8px;
   width: 40%; /* Could be more or less, depending on screen size */
   background-color: var(--blue);
   font-family: "Patrick Hand";
+}
+
+label {
+  font-weight: normal;
+  color: var(--orange);
+  white-space: nowrap;
+  font-family: "Bangers", cursive;
+  text-shadow: 1.5px 1.5px #225479;
 }
 
 /*Play Button*/
@@ -466,7 +513,8 @@ nav {
   box-shadow: 0 1px 0 #000;
 }
 
-@media (max-width: 750px) {
+/*Galaxy S10*/
+@media (max-width: 400px) {
   #wrapper {
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(1, auto);
@@ -499,54 +547,42 @@ nav {
   .navBtn {
     height: 5vh;
     width: 25vw;
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 0px;
   }
-    #content {
-      grid-area: content;
-      height: auto;
-      height: 85vh;
-      width: 98.3vw;
-    }
+
+  #content {
+    grid-area: content;
+    height: auto;
+    height: 84vh;
+    width: 98.3vw;
+  }
     
-    #mainContent {
-      height: 85vh;
-      width: 98.3vw;
-      border-top-left-radius: 0px;
-    }
-
-    #paulC {
-      grid-area: paulC;
-      margin-left: 20vw;
-      height: 20vh;
-      width: 60vw;
-    }
-    
-    #paulZ {
-      grid-area: paulZ;
-      margin-top: 5vh;
-      margin-left: 20vw;
-      height: 25vh;
-      width: 60vw;
-    }
-
-    #paulZ li:nth-child(1), #paulZ li:nth-child(2) {
-      display: none;
-    }
-
-    
-
-
-
-
-
-
-
-  #game {
-    height: 70;
-    width: 100;
+  #mainContent {
+    height: 84vh;
+    width: 98.3vw;
+    border-top-left-radius: 0px;
   }
 
+  #paulC {
+    grid-area: paulC;
+    margin-left: 20vw;
+    height: 20vh;
+    width: 60vw;
+  }
+    
+  #paulZ {
+    grid-area: paulZ;
+    margin-top: 5vh;
+    margin-left: 20vw;
+    height: 25vh;
+    width: 60vw;
+  }
+
+  #paulZ li:nth-child(1), #paulZ li:nth-child(2) {
+    display: none;
+  }    
+    
   #descriptionClose {
     display: none;
   }
@@ -554,4 +590,75 @@ nav {
   #descriptionOpen {
     display: none;
   }
+
+  #mode {
+    margin-top: 25vw;
+    width: 80vw;
+    border-radius: 8px;
+    height: 50vh;
+  }
+
+  label {
+    font-weight: normal;
+    color: var(--orange);
+    white-space: nowrap;
+    font-family: "Bangers", cursive;
+    text-shadow: 1.5px 1.5px #225479;
+  }
+
+  div>div>p2 {      
+    display: none;
+  }
+
+  #game {
+    height: 80vh;
+    width: 98.3vw;
+    background: url(../img/mozart_mobile.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+
+  #progLabel {
+    margin-top: 4vw;
+    text-align: center;
+    font-weight: normal;
+    color: var(--orange);
+    white-space: nowrap;
+    font-size: 8vw;
+    font-family: "Bangers", cursive;
+    text-shadow: 3px 3px #225479;
+  }
+
+  #progress {
+    height: 4vh;
+    width: 70vw;
+  }
+  
+  #gameBtn {
+    left: 10%; 
+    top: 60%;
+  }
+
+  .choiceBtn {
+    height: 5vh;
+    width: 18vw;
+  }
+
+  #finish {
+    margin-top: 30vh;
+    width: 70vw;
+  }
+  
+  .finishBtn {
+    height: 7vh;
+    width: 35vw;
+    padding: 5px;
+  }
 }
+
+
+
+  
+
+
+
