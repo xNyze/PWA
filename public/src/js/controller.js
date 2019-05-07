@@ -108,8 +108,15 @@ function navigateStatRounds(direction) {
 
   var currentStatObject = statsObject.rounds[statsObject.indexRounds];
 
-  document.querySelector("#userAnswer").textContent = currentStatObject[statsObject.indexQuestions].answer;
-  document.querySelector("#correctAnswer").textContent = currentStatObject[statsObject.indexQuestions].noteObject.note.slice(0, 1);
+  var userAnswer = document.querySelector("#userAnswer");
+  var solution = document.querySelector("#correctAnswer");
+  userAnswer.textContent = currentStatObject[statsObject.indexQuestions].answer;
+  solution.textContent = currentStatObject[statsObject.indexQuestions].noteObject.note[0].slice(0, 1);
+  if (userAnswer.textContent === solution.textContent) {
+    userAnswer.style.color = "green";
+  } else {
+    userAnswer.style.color = "red";
+  }
   renderNotes(currentStatObject[statsObject.indexQuestions].noteObject.note, modeObject.key, document.querySelector("#statNote"));
 
   document.querySelector("#roundBack").style.display = statsObject.indexRounds == 0 ? "none" : "";
@@ -131,9 +138,15 @@ function navigateStatQuestions(direction) {
   var currentStatObject = statsObject.rounds[statsObject.indexRounds];
 
   //render current question of current round
-  document.querySelector("#userAnswer").textContent = currentStatObject[statsObject.indexQuestions].answer;
-  document.querySelector("#correctAnswer").textContent = currentStatObject[statsObject.indexQuestions].noteObject.note.slice(0, 1);
-  renderNotes(currentStatObject[statsObject.indexQuestions].noteObject.note, modeObject.key, document.querySelector("#statNote"));
+  var userAnswer = document.querySelector("#userAnswer");
+  var solution = document.querySelector("#correctAnswer");
+  userAnswer.textContent = currentStatObject[statsObject.indexQuestions].answer;
+  solution.textContent = currentStatObject[statsObject.indexQuestions].noteObject.note[0].slice(0, 1);
+  if (userAnswer.textContent === solution.textContent) {
+    userAnswer.style.color = "green";
+  } else {
+    userAnswer.style.color = "red";
+  } renderNotes(currentStatObject[statsObject.indexQuestions].noteObject.note, modeObject.key, document.querySelector("#statNote"));
 
   //show forward/back button or not
   document.querySelector("#questionBack").style.display = statsObject.indexQuestions == 0 ? "none" : "";

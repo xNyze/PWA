@@ -7,7 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="Stylesheet" href="./src/css/style.css" />
   <link rel="manifest" href="manifest.json">
-  <link rel="Stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="Stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   <title>Noten Lernprogramm</title>
 </head>
@@ -51,10 +52,15 @@
           <div id="lastRound">
             <button id="roundBack" class="statsBtn">&lt</button>
             <button id="roundForward" class="statsBtn">&gt</button>
-            <p id="userAnswer">
-            </p>
-            <p3 id="correctAnswer"></p3>
             <div id="statNote"></div>
+            <div id="answerWrapper">
+              <div class="answers">
+                Ihre Antwort: <span id="userAnswer"></span>
+              </div>
+              <div class="answers">
+                Lösung: <span id="correctAnswer"></span>
+              </div>
+            </div>
             <button id="questionBack" class="statsBtn"> &lt&lt </button>
             <button id="questionForward" class="statsBtn"> &gt&gt </button>
           </div>
@@ -67,7 +73,7 @@
             <div class="social-containers">
               <ul class="social-icons">
                 <li><a target="_blank" href="https://www.linkedin.com/in/paul-christ-9a0842165/">
-                  <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-linkedin"></i>
                   </a></li>
                 <li><a target="_blank" href="https://github.com/plc-dev"><i class="fab fa-github"></i></a></li>
               </ul>
@@ -78,19 +84,19 @@
             <div class="social-container">
               <ul class="social-icons">
                 <li><a target="_blank" href="https://soundcloud.com/jcpauletto">
-                  <i class="fab fa-soundcloud"></i></a></li>
-              <li><a target="_blank" href="https://www.facebook.com/paulozaenker">
-                <i class="fab fa-facebook-f"></i></a></li>
-              <li><a target="_blank" href="https://www.linkedin.com/in/paul-z%C3%A4nker/">
-                <i class="fab fa-linkedin"></i></a></li>
-               <li><a target="_blank" href="https://github.com/xNyze">
-                <i class="fab fa-github"></i></a></li>
+                    <i class="fab fa-soundcloud"></i></a></li>
+                <li><a target="_blank" href="https://www.facebook.com/paulozaenker">
+                    <i class="fab fa-facebook-f"></i></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/in/paul-z%C3%A4nker/">
+                    <i class="fab fa-linkedin"></i></a></li>
+                <li><a target="_blank" href="https://github.com/xNyze">
+                    <i class="fab fa-github"></i></a></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div id="descriptionClose">
         <button id='descriptionBtn'><i class="fas fa-scroll"></i> Spielbeschreibung</button>
       </div>

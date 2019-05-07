@@ -104,8 +104,15 @@ function renderStats() {
   var currentStatObject = statsObject.rounds[statsObject.indexRounds];
   statsObject.indexQuestions = 0;
 
-  document.querySelector("#userAnswer").textContent = currentStatObject[statsObject.indexQuestions].answer;
-  document.querySelector("#correctAnswer").textContent = currentStatObject[statsObject.indexQuestions].noteObject.note.slice(0, 1);
+  var userAnswer = document.querySelector("#userAnswer");
+  var solution = document.querySelector("#correctAnswer");
+  userAnswer.textContent = currentStatObject[statsObject.indexQuestions].answer;
+  solution.textContent = currentStatObject[statsObject.indexQuestions].noteObject.note[0].slice(0, 1);
+  if (userAnswer.textContent === solution.textContent) {
+    userAnswer.style.color = "green";
+  } else {
+    userAnswer.style.color = "red";
+  }
   renderNotes(currentStatObject[statsObject.indexQuestions].noteObject.note, modeObject.key, document.querySelector("#statNote"));
 
   document.querySelector("#questionBack").style.display = "none";

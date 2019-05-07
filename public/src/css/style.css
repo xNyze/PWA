@@ -236,6 +236,31 @@ nav {
   display: none;
 }
 
+#stats * {
+  padding-bottom: 1vh;
+}
+
+#answerWrapper {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center; 
+  align-items: center;
+}
+
+.answers{
+  text-align: center;
+  font-family: "Patrick Hand";
+  font-size: 2em;
+  color: #225479;
+}
+
+#correctAnswer, #userAnswer {
+  font-family: "Patrick Hand";
+  color: #225479;
+  text-decoration: underline;
+}
+
 .statsBtn {
   display: inline-block;
   text-decoration: none;
