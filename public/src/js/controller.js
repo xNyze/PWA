@@ -147,7 +147,7 @@ function nextNote(clickedID) {
   progressBar();
   statistic(clickedID);
   if (modeObject.currentProblem + 1 < modeObject.totalProblems) {
-    initNotes(modeObject.key, true);
+    initNotes(modeObject.key, randomize);
     changeAnswerBtns();
     modeObject.currentProblem++;
   } else {

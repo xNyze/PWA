@@ -4,16 +4,34 @@ var statsObject = {
   rounds: []
 };
 var modeObject;
+var randomize = true;
 /**
  * initializes every new note + answers for the game
  * @param {String} enteredKey
- * @param {boolean} rand
+ * @param {boolean} randomize
  */
-function initNotes(enteredKey, rand) {
+function initNotes(enteredKey, randomize) {
   var key = enteredKey || "treble";
 
-  if (rand) {
+  if (randomize) {
     noteObject = genNote();
+  } else { // fetch task from remote server and parse to fit the noteObject format
+    var opts = {
+      method: 'GET',
+      headers: {}
+    };
+    fetch('/get-data', opts).then(function (response) {
+      return response.json();
+    })
+      .then(function (responseBody) {
+        var parsedResponse = {
+          note: [responseBody.note[0].a.substring(0, 1) + "/" + responseBody.note[0].a.substring(1, 2)],
+          answers: responseBody.note[0].l
+        };
+
+        noteObject = parsedResponse;
+        console.warn(noteObject.note);
+      });
   }
   renderNotes(noteObject.note, key, document.getElementById("note"));
 }

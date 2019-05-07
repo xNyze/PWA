@@ -119,7 +119,7 @@ function renderStats() {
  * initiates modeModal, renders the game-div, hides all other in mainContent
  */
 function renderGame() {
-  initNotes(document.querySelector(".keys:checked").id, true);
+  initNotes(document.querySelector(".keys:checked").id, randomize);
   changeAnswerBtns();
   document.querySelectorAll(".modal").forEach(function (modal) {
     modal.style.display = "none";
