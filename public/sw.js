@@ -1,4 +1,4 @@
-self.addEventListener("install", function () {
+self.addEventListener("install", function (event) {
   console.log("SW Installed");
   event.waitUntil(
     caches.open("static").then(function (cache) {
@@ -22,20 +22,13 @@ self.addEventListener("install", function () {
         "/src/fonts/Bangers/bangers-regular-webfont.woff2",
         "/src/fonts/Bangers/Bangers-Regular.ttf",
         "/src/fonts/Bangers/stylesheet.css",
-        "https://fonts.googleapis.com/css?family=Patrick+Hand",
-        "https://www.linkedin.com/in/paul-christ-9a0842165/",
-        "https://github.com/plc-dev",
-        "http://www.w3.org/2000/svg",
-        "http://www.w3.org/1999/xlink",
-        "http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/",
-        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css",
         ""
       ]);
-    })
+    }).catch((err) => { console.warn(err); })
   );
 });
 
-self.addEventListener("activate", function () {
+self.addEventListener("activate", function (event) {
   console.log("SW Activated");
 });
 
@@ -48,5 +41,8 @@ self.addEventListener("fetch", function (event) {
         return fetch(event.request);
       }
     })
+      .catch((err) => {
+        console.warn(err);
+      })
   );
 });

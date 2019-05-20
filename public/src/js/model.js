@@ -15,25 +15,25 @@ function initNotes(enteredKey, randomize) {
 
   if (randomize) {
     noteObject = genNote();
+    renderNotes(noteObject.note, key, document.getElementById("note"));
   } else { // fetch task from remote server and parse to fit the noteObject format
     var opts = {
       method: 'GET',
       headers: {}
     };
-    fetch('/get-data', opts).then(function (response) {
+    fetch('https://floating-chamber-45103.herokuapp.com/api', opts).then(function (response) {
       return response.json();
     })
       .then(function (responseBody) {
         var parsedResponse = {
-          note: [responseBody.note[0].a.substring(0, 1) + "/" + responseBody.note[0].a.substring(1, 2)],
-          answers: responseBody.note[0].l
+          note: [responseBody[0].note.a.substring(0, 1) + "/" + responseBody[0].note.a.substring(1, 2)],
+          answers: responseBody[0].note.l
         };
 
         noteObject = parsedResponse;
-        console.warn(noteObject.note);
+        renderNotes(noteObject.note, key, document.getElementById("note"));
       });
   }
-  renderNotes(noteObject.note, key, document.getElementById("note"));
 }
 
 /**

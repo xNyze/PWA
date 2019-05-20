@@ -14,6 +14,13 @@
 </head>
 
 <body>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(function () {
+        console.log('SW registered');
+      });
+    } 
+  </script>
   <!--wrapper-->
   <div id="wrapper">
     <!--Headline-->
@@ -55,10 +62,10 @@
             <div id="statNote"></div>
             <div id="answerWrapper">
               <div class="answers">
-                Ihre Antwort:   <span id="userAnswer"></span>
+                Ihre Antwort: <span id="userAnswer"></span>
               </div>
               <div class="answers">
-                Lösung:   <span id="correctAnswer"></span>
+                Lösung: <span id="correctAnswer"></span>
               </div>
             </div>
             <button id="questionBack" class="statsBtn"> vorherige Frage </button>
@@ -175,7 +182,6 @@
 
       </div>
     </div>
-    <script src="./src/js/regSW.js"></script>
     <script src="./src/js/vexflow-min.js"></script>
     <script src="./src/js/model.js"></script>
     <script src="./src/js/view.js"></script>

@@ -70,13 +70,13 @@ function initializeUI() {
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('../sw.js').then(function (swReg) {
         console.log('SW registered', swReg);
-        swRegistration = swReg;
-        initializeUI();
+        //swRegistration = swReg;
+        //initializeUI();
     });
 }
 if ('PushManager' in window) {
     console.log('Push is supported');
 } else {
     console.warn("Push messaging is not supported");
-    pushButton.textContent = 'Push Not Supported';
+    //pushButton.textContent = 'Push Not Supported';
 }
