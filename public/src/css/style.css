@@ -55,18 +55,19 @@ h2 {
   text-align: center;
   font-weight: normal;
   color: var(--orange);
-  font-size: 5em;
   white-space: nowrap;
   font-size: 3vw;
   font-family: "Bangers", cursive;
   text-shadow: 3px 3px #225479;
 }
 
-h3 {
-  font-family: "Patrick Hand";
-  text-decoration: underline;
-  color: #225479;
-  font-size: 2.5em;
+h3, #progLabel {
+  white-space: nowrap;
+  font-weight: normal;
+  color: var(--orange);
+  font-size: 2.5vw;
+  font-family: "Bangers", cursive;
+  text-shadow: 3px 3px #225479;
 }
 
 p1 {
@@ -91,7 +92,7 @@ p3 {
   text-decoration: underline;
 }
 
-p4 {
+p4, .answers {
   font-family: "Patrick Hand";
   font-size: 1.5em;
 }
@@ -117,7 +118,7 @@ nav {
   height: 10vh;
   width: 15vw;
   font-family: "Patrick Hand";
-  font-size: 1.8em;
+  font-size: 1.5em;
   padding: 0 2em;
   cursor: pointer;
   transition: 800ms ease all;
@@ -173,24 +174,36 @@ nav {
 
 #game {
   display: none;
-  height: 78vh;
+  height: 75vh;
   width: 60vw;
-  background: url(../img/mozart_3.png);
+  background: url(../img/image_desktop.png);
   background-repeat: no-repeat;
   background-position: bottom;
 }
 
 #progLabel {
-  font-family: "Patrick Hand";
-  font-size: 1.5em;
+  font-size: 2vw;
+  text-shadow: 2px 2px #225479;
 }
 
-#progress {
+progress {
+  -webkit-appearance: none;
   display: flex;
   flex-direction: column;
   margin: auto;
   height: 3vh;
   width: 35vw;
+}
+
+::-webkit-progress-bar {
+  background: var(--blue);
+  border-radius: 13px;
+  border: 4px solid #225479;
+}
+
+::-webkit-progress-value { 
+  background: var(--orange);
+  border-radius: 13px;
 }
 
 #gameBtn {
@@ -200,23 +213,25 @@ nav {
   top: 50%;
 }
 
-.choiceBtn {
+.choiceBtn, .statsBtn {
   background: #FFF;
   display: block;
+  margin-top: 4vh;
   height: 7.5vh;
   width: 10vw;
   padding: 5px 15px;
   border-radius: 5px;
   border: 2px solid #000;
 }
-.choiceBtn:hover {
+.choiceBtn:hover, .statsBtn:hover {
   box-shadow: 0 2px 0 #000, 0 3px 0px 3px var(--orange);
 }
-.choiceBtn:active {
+.choiceBtn:active, .statsBtn:active {
   top: 4px;
   padding-bottom: 0px;
   box-shadow: 0 1px 0 #000;
 }
+
 .choiceBtn {
   position: relative;
   float: left;
@@ -237,26 +252,12 @@ nav {
 
 .statsBtn {
   display: inline-block;
+  color: #000;
+  font: normal 22px/25px "Patrick Hand", sans-serif;
   text-decoration: none;
-  color: black;
-  background-color: var(--blue);
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  font-family: "Bangers", cursive;
-  font-size: 3em;
-  border-radius: 50%;
-  border: double 5px black;
-  text-align: center;
-  vertical-align: middle;
-  overflow: hidden;
-  transition: 0.6s;
-}
-
-.statsBtn:hover {
-  -webkit-transform: rotateY(360deg);
-  -ms-transform: rotateY(360deg);
-  transform: rotateY(360deg);
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #000;
+  transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
 }
 
 #contact {
@@ -342,15 +343,9 @@ nav {
   width: 20vw;
   align-items: center;
   border-top-left-radius: 18px;
-  background: var(--blue) url(../img/mozart.png);
+  background: var(--blue) url(../img/image_description.png);
   background-repeat: no-repeat;
   background-position: bottom;
-}
-
-#click {
-  position: relative;
-  text-align: center;
-  margin-top: 5vh;
 }
 
 #descriptionOpen {
@@ -360,6 +355,50 @@ nav {
   width: 20vw;
   background-color: var(--blue);
   border-top-left-radius: 18px;
+}
+
+/*similar to navBtn, only height and width changed -> dont know how to implement this easier!!!*/
+#descriptionBtn {
+  margin-top: 4vh;
+  background: #225479;
+  color: #fff;
+  border: none;
+  position: relative;
+  height: 10vh;
+  width: 17vw;
+  font-family: "Patrick Hand";
+  font-size: 1.35em;
+  padding: 0 2em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+}
+
+#descriptionBtn:hover {
+  background: var(--orange);
+  color: #225479;
+}
+#descriptionBtn:before,
+#descriptionBtn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #225479;
+  transition: 400ms ease all;
+}
+#descriptionBtn:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+#descriptionBtn:hover:before,
+#descriptionBtn:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
 }
 
 .modal {
@@ -378,11 +417,19 @@ nav {
 #mode {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #000;
   border-radius: 8px;
   width: 40%; /* Could be more or less, depending on screen size */
   background-color: var(--blue);
   font-family: "Patrick Hand";
+}
+
+label {
+  font-weight: normal;
+  color: var(--orange);
+  white-space: nowrap;
+  font-family: "Bangers", cursive;
+  text-shadow: 1.5px 1.5px #225479;
 }
 
 /*Play Button*/
@@ -468,7 +515,36 @@ nav {
   box-shadow: 0 1px 0 #000;
 }
 
-@media (max-width: 750px) {
+/*NOTEBOOK*/
+@media (max-width: 1024px) {
+  #paulC {
+    height: 22vh;
+  }
+  
+  #paulZ {
+    margin-top: 8vh;
+    height: 22vh;
+  }
+
+  .navBtn {
+    font-size: 1.2em;
+  }
+
+  #descriptionBtn {
+    width: 17vw;
+    font-size: 1em;
+  }
+
+  #descriptionClose {
+    background: var(--blue) url(../img/image_description_notebook.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+  
+}
+
+/*MOBILE PHONE*/
+@media (max-width: 400px) {
   #wrapper {
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(1, auto);
@@ -501,59 +577,119 @@ nav {
   .navBtn {
     height: 5vh;
     width: 25vw;
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 0px;
   }
-    #content {
-      grid-area: content;
-      height: auto;
-      height: 85vh;
-      width: 98.3vw;
-    }
+
+  #content {
+    grid-area: content;
+    height: auto;
+    height: 84vh;
+    width: 98.3vw;
+  }
     
-    #mainContent {
-      height: 85vh;
-      width: 98.3vw;
-      border-top-left-radius: 0px;
-    }
-
-    #paulC {
-      grid-area: paulC;
-      margin-left: 20vw;
-      height: 20vh;
-      width: 60vw;
-    }
-    
-    #paulZ {
-      grid-area: paulZ;
-      margin-top: 5vh;
-      margin-left: 20vw;
-      height: 25vh;
-      width: 60vw;
-    }
-
-    #paulZ li:nth-child(1), #paulZ li:nth-child(2) {
-      display: none;
-    }
-
-    
-
-
-
-
-
-
-
-  #game {
-    height: 70;
-    width: 100;
+  #mainContent {
+    height: 84vh;
+    width: 98.3vw;
+    border-top-left-radius: 0px;
   }
 
+  #paulC {
+    grid-area: paulC;
+    margin-left: 20vw;
+    height: 20vh;
+    width: 60vw;
+  }
+    
+  #paulZ {
+    grid-area: paulZ;
+    margin-top: 5vh;
+    margin-left: 20vw;
+    height: 25vh;
+    width: 60vw;
+  }
+
+  #paulZ li:nth-child(1), #paulZ li:nth-child(2) {
+    display: none;
+  }    
+    
   #descriptionClose {
     display: none;
   }
   
   #descriptionOpen {
     display: none;
+  }
+
+  #mode {
+    margin-top: 25vw;
+    width: 80vw;
+    border-radius: 8px;
+    height: 50vh;
+  }
+
+  label {
+    font-weight: normal;
+    color: var(--orange);
+    white-space: nowrap;
+    font-family: "Bangers", cursive;
+    text-shadow: 1.5px 1.5px #225479;
+  }
+
+  div>div>p2 {      
+    display: none;
+  }
+
+  #game {
+    height: 80vh;
+    width: 98.3vw;
+    background: url(../img/image_mobile.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+
+  #progLabel {
+    margin-top: 4vw;
+    text-align: center;
+    font-weight: normal;
+    color: var(--orange);
+    white-space: nowrap;
+    font-size: 8vw;
+    font-family: "Bangers", cursive;
+    text-shadow: 3px 3px #225479;
+  }
+
+  #progress {
+    height: 4vh;
+    width: 70vw;
+  }
+
+  ::-webkit-progress-bar {
+    border: 3px solid #225479;
+  }
+  
+  #gameBtn {
+    left: 10%; 
+    top: 60%;
+  }
+
+  .choiceBtn {
+    height: 5vh;
+    width: 18vw;
+  }
+
+  #finish {
+    margin-top: 30vh;
+    width: 70vw;
+  }
+  
+  .finishBtn, .statsBtn {
+    height: 7vh;
+    width: 35vw;
+    padding: 5px;
+  }
+
+  .statsBtn {
+    font: normal 18px/15px "Patrick Hand", sans-serif;
   }
 }
