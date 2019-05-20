@@ -59,6 +59,7 @@ document.querySelector('#descriptionBtn').addEventListener("click", function () 
   document.querySelector("#descriptionOpen").style.display = "block";
 });
 
+
 /**
  * changes the textContent of the answerButtons to the according answer possibilities after
  * shuffling the array ob the global noteObject
