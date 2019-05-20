@@ -415,6 +415,8 @@ nav {
   stroke: #f8aa28;
   animation: nudge 0.7s ease-in-out;
 }
+
+
 @keyframes nudge {
   0% {
     transform: translateX(0);
