@@ -59,6 +59,13 @@ document.querySelector('#descriptionBtn').addEventListener("click", function () 
   document.querySelector("#descriptionOpen").style.display = "block";
 });
 
+/**
+ * eventlistener for Ajax Calls
+ */
+document.querySelector('#navAjax').addEventListener("click", function () {
+  ajaxCall();
+  randomize = false;
+});
 
 /**
  * changes the textContent of the answerButtons to the according answer possibilities after
