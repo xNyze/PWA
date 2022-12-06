@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/jcpaulo/PWA#readme",
   "devDependencies": {
-    "http-server": "^0.10.0"
+    "http-server": "^14.1.1"
   }
 }
